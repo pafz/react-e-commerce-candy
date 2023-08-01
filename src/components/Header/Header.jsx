@@ -1,12 +1,12 @@
 import './Header.scss';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
 
 const Header = () => {
   const { token, logout } = useContext(UserContext);
 
-  const navigate = useNavivate();
+  const navigate = useNavigate();
 
   const logoutUser = () => {
     logout();

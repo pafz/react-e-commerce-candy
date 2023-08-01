@@ -8,11 +8,13 @@ const initialState = {
   token: token ? token : null,
   user: null,
 };
+export const UserContext = createContext(initialState);
 
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
   const login = async user => {
+    console.log(user);
     const res = await axios.post(API_URL + '/users/login', user);
     dispatch({
       type: 'LOGIN',
@@ -37,18 +39,6 @@ export const UserProvider = ({ children }) => {
     return res;
   };
 
-  const users = (state, action) => {
-    switch (action.type) {
-      case 'LOGIN':
-        return {
-          ...state,
-          token: action.payload.token,
-        };
-      default:
-        return state;
-    }
-  };
-
   const logout = async () => {
     const token = JSON.parse(localStorage.getItem('token'));
     const res = await axios.delete(API_URL + '/users/logout', {
@@ -63,24 +53,20 @@ export const UserProvider = ({ children }) => {
     if (res.data) {
       localStorage.removeItem('token');
     }
-
-    return (
-      <UserContext.Provider
-        value={{
-          token: state.token,
-          user: state.user,
-          login,
-          getUserInfo,
-          users,
-          logout,
-        }}
-      >
-        {children}
-      </UserContext.Provider>
-    );
   };
+  return (
+    <UserContext.Provider
+      value={{
+        token: state.token,
+        user: state.user,
+        login,
+        getUserInfo,
+        logout,
+      }}
+    >
+      {children}
+    </UserContext.Provider>
+  );
 };
 
 const API_URL = 'http://localhost:3000'; //el puerto que estemos usando en el backend
-
-export const UserContext = createContext(initialState);

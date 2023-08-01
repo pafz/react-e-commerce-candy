@@ -11,6 +11,11 @@ const users = (state, action) => {
         user: null,
         token: null,
       };
+    case 'LOGIN':
+      return {
+        ...state,
+        token: action.payload.token,
+      };
     default:
       return state;
   }
