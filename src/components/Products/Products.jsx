@@ -4,11 +4,9 @@ import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 const Products = () => {
   const { getProducts, products } = useContext(ProductsContext);
 
-  useEffect =
-    (() => {
-      getProducts();
-    },
-    []);
+  useEffect(() => {
+    getProducts();
+  }, []);
 
   const product = products.map(product => {
     return (

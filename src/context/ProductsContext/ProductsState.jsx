@@ -1,5 +1,6 @@
 import { createContext, useReducer } from 'react';
 import ProductsReducer from './ProductsReducer';
+import axios from 'axios';
 
 const initialState = {
   products: [],
