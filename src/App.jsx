@@ -7,6 +7,7 @@ import { UserProvider } from './context/UserContext/UserState';
 import Footer from './components/Footer/Footer';
 import { ProductsProvider } from './context/ProductsContext/ProductsState';
 import Products from './components/Products/Products';
+import Cart from './components/Cart/Cart';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
               <Route path="/" element={<Login />} />
               <Route path="/profile" element={<Profile />} />
               <Route path="/products" element={<Products />} />
+              <Route path="/cart" element={<Cart />} />
             </Routes>
             <Footer />
           </ProductsProvider>

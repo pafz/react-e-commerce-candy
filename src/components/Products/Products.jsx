@@ -2,7 +2,7 @@ import React, { useContext, useEffect } from 'react';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 
 const Products = () => {
-  const { getProducts, products } = useContext(ProductsContext);
+  const { getProducts, products, addCart } = useContext(ProductsContext);
 
   useEffect(() => {
     getProducts();
@@ -13,6 +13,7 @@ const Products = () => {
       <div key={product.id}>
         <span>{product.name}</span>
         <span>{product.price.toFixed(2)}</span>
+        <button onClick={() => addCart(product)}>Add Cart</button>
       </div>
     );
   });
