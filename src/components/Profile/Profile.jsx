@@ -7,12 +7,13 @@ const Profile = () => {
   useEffect(() => {
     getUserInfo();
   }, []);
+  console.log(user);
 
   if (!user) {
     return <span>Cargando...</span>;
   }
-
-  return <div>Profile {user.name}</div>;
+  //FIXME: change values, how to print in an easy way?
+  return <div>Your profile {user.name}</div>;
 };
 
 export default Profile;

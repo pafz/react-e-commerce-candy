@@ -17,12 +17,12 @@ const Header = () => {
 
   return (
     <nav className="header">
-      <span>Header</span>
+      <span>≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋ Header ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋</span>
       <div>
         {token ? (
           <>
             <span onClick={logoutUser}>
-              <Link to="/">Logout</Link>
+              <Link to="/">Logout | </Link>
             </span>
             <span>
               <Link to="/profile">Profile</Link>
@@ -30,7 +30,7 @@ const Header = () => {
           </>
         ) : (
           <span>
-            <Link to="/">Login</Link>
+            <Link to="/"> | Login | </Link>
           </span>
         )}
       </div>
