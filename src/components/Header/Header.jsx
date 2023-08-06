@@ -1,10 +1,12 @@
 import './Header.scss';
 import { Link, useNavigate } from 'react-router-dom';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
+import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 
 const Header = () => {
   const { token, logout } = useContext(UserContext);
+  const { cart } = useContext(ProductsContext);
 
   const navigate = useNavigate();
 
@@ -14,6 +16,10 @@ const Header = () => {
       navigate('/');
     }, 2000);
   };
+
+  useEffect(() => {
+    localStorage.setItem('card', JSON.stringify(cart));
+  }, [cart]);
 
   return (
     <nav className="header">
@@ -25,19 +31,22 @@ const Header = () => {
               <Link to="/">Logout | </Link>
             </span>
             <span>
-              <Link to="/profile">Profile</Link>
+              <Link to="/profile">Profile | </Link>
             </span>
             <span>
-              <Link to="/cart">Cart </Link>
+              <Link to="/cart">Cart | </Link>
+            </span>
+            <span>
+              <Link to="/home">Home | </Link>
             </span>
           </>
         ) : (
           <>
             <span>
-              <Link to="/products">Products | </Link>
+              <Link to="/home">Home | </Link>
             </span>
             <span>
-              <Link to="/"> | Login | </Link>
+              <Link to="/">Login | </Link>
             </span>
           </>
         )}

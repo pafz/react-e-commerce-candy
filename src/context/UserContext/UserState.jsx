@@ -8,6 +8,7 @@ const initialState = {
   token: token ? token : null,
   user: null,
 };
+
 export const UserContext = createContext(initialState);
 
 export const UserProvider = ({ children }) => {
@@ -39,6 +40,22 @@ export const UserProvider = ({ children }) => {
     return res;
   };
 
+  /// ??????
+  const getOrdersAndProducts = async () => {
+    const token = JSON.parse(localStorage.getItem('token'));
+    const res = await axios.get(API_URL + '/getOrdersAndProducts', {
+      headers: {
+        authorization: token,
+      },
+    });
+    console.log(res.data);
+    dispatch({
+      type: 'GET_USER_ORDERS_PRODUCTS',
+      payload: res.data,
+    });
+    return res;
+  };
+
   const logout = async () => {
     const token = JSON.parse(localStorage.getItem('token'));
     const res = await axios.delete(API_URL + '/users/logout', {
@@ -62,6 +79,7 @@ export const UserProvider = ({ children }) => {
         login,
         getUserInfo,
         logout,
+        getOrdersAndProducts,
       }}
     >
       {children}

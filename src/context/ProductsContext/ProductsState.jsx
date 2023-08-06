@@ -2,9 +2,11 @@ import { createContext, useReducer } from 'react';
 import ProductsReducer from './ProductsReducer';
 import axios from 'axios';
 
+const cart = JSON.parse(localStorage.getItem('cart'));
+
 const initialState = {
   products: [],
-  cart: [],
+  cart: cart ? cart : [],
 };
 
 export const ProductsProvider = ({ children }) => {
@@ -25,6 +27,18 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
+  const clearCart = () => {
+    dispatch({
+      type: 'CLEAR_CART',
+    });
+  };
+
+  const clearItem = () => {
+    dispatch({
+      type: 'CLEAR_ITEM',
+    });
+  };
+
   ///// return debe ir fuera de las funciones, devuelve lo que se introduzca para hacerlo global y devolverla, para usarla en cualquier parte
   return (
     <ProductsContext.Provider
@@ -33,6 +47,8 @@ export const ProductsProvider = ({ children }) => {
         getProducts,
         addCart,
         cart: state.cart,
+        clearCart,
+        clearItem,
       }}
     >
       {children}

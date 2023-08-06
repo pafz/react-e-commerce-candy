@@ -16,6 +16,11 @@ const users = (state, action) => {
         ...state,
         token: action.payload.token,
       };
+    case 'GET_USER_ORDERS_PRODUCTS':
+      return {
+        ...state,
+        ordersProducts: action.payload, /// ??????
+      };
     default:
       return state;
   }

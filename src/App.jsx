@@ -8,6 +8,7 @@ import Footer from './components/Footer/Footer';
 import { ProductsProvider } from './context/ProductsContext/ProductsState';
 import Products from './components/Products/Products';
 import Cart from './components/Cart/Cart';
+import { OrdersProvider } from './context/OrdersContext/OrdersState';
 
 function App() {
   return (
@@ -15,14 +16,16 @@ function App() {
       <Router>
         <UserProvider>
           <ProductsProvider>
-            <Header />
-            <Routes>
-              <Route path="/" element={<Login />} />
-              <Route path="/profile" element={<Profile />} />
-              <Route path="/products" element={<Products />} />
-              <Route path="/cart" element={<Cart />} />
-            </Routes>
-            <Footer />
+            <OrdersProvider>
+              <Header />
+              <Routes>
+                <Route path="/" element={<Login />} />
+                <Route path="/profile" element={<Profile />} />
+                <Route path="/home" element={<Products />} />
+                <Route path="/cart" element={<Cart />} />
+              </Routes>
+              <Footer />
+            </OrdersProvider>
           </ProductsProvider>
         </UserProvider>
       </Router>
