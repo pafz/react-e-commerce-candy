@@ -1,19 +1,23 @@
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
-import { OrderContext } from '../../context/OrdersContext/OrdersState';
+//TODO: change Uppercase Products.map line 36
 
 const Profile = () => {
-  const { getUserInfo, user } = useContext(UserContext);
-  const { orders } = useContext(OrderContext); ///
+  const { getUserInfo, getOrdersAndProducts, user, ordersProducts } =
+    useContext(UserContext);
 
   useEffect(() => {
     getUserInfo();
   }, []);
 
+  useEffect(() => {
+    getOrdersAndProducts();
+  }, []);
+
   if (!user) {
     return <span>Cargando...</span>;
   }
-
+  console.log(ordersProducts);
   return (
     <>
       <div key={user.id}>
@@ -26,16 +30,24 @@ const Profile = () => {
       </div>
       <div>
         Yours orders
-        {orders}
-        <p>
-          {/* {user.orderIds.map(order => {
+        <ul>
+          {ordersProducts.map(order => {
             return (
-              <div key={order.id}>
-                <p>Nº pedido: {order.id}</p>
-              </div>
+              <li key={order.id}>
+                {order.id} - {order.createdAt} - TOTAL: {order.payment}
+                <ul>
+                  {order.Products.map(product => {
+                    return (
+                      <li>
+                        {product.id} - {product.name}
+                      </li>
+                    );
+                  })}
+                </ul>
+              </li>
             );
-          })} */}
-        </p>
+          })}
+        </ul>
       </div>
     </>
   );

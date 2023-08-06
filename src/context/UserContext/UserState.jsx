@@ -7,6 +7,7 @@ const token = JSON.parse(localStorage.getItem('token'));
 const initialState = {
   token: token ? token : null,
   user: null,
+  ordersProducts: null,
 };
 
 export const UserContext = createContext(initialState);
@@ -15,7 +16,6 @@ export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
   const login = async user => {
-    console.log(user);
     const res = await axios.post(API_URL + '/users/login', user);
     dispatch({
       type: 'LOGIN',
@@ -43,15 +43,14 @@ export const UserProvider = ({ children }) => {
   /// ??????
   const getOrdersAndProducts = async () => {
     const token = JSON.parse(localStorage.getItem('token'));
-    const res = await axios.get(API_URL + '/getOrdersAndProducts', {
+    const res = await axios.get(API_URL + '/orders/getOrdersAndProducts', {
       headers: {
         authorization: token,
       },
     });
-    console.log(res.data);
     dispatch({
       type: 'GET_USER_ORDERS_PRODUCTS',
-      payload: res.data,
+      payload: res.data.ordersProducts,
     });
     return res;
   };
@@ -71,11 +70,13 @@ export const UserProvider = ({ children }) => {
       localStorage.removeItem('token');
     }
   };
+
   return (
     <UserContext.Provider
       value={{
         token: state.token,
         user: state.user,
+        ordersProducts: state.ordersProducts,
         login,
         getUserInfo,
         logout,
