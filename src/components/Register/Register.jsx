@@ -15,7 +15,7 @@ const Register = () => {
     }, 2000);
   }, [login]);
 
-  return <div className="container">///////AQUI FORM</div>;
+  return <div className="container">////AQUI</div>;
 };
 
 export default Register;
