@@ -46,6 +46,9 @@ const Header = () => {
               <Link to="/home">Home | </Link>
             </span>
             <span>
+              <Link to="/register"> Register | </Link>
+            </span>
+            <span>
               <Link to="/">Login | </Link>
             </span>
           </>

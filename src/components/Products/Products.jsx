@@ -8,9 +8,9 @@ const Products = () => {
     getProducts();
   }, []);
 
-  //   useEffect(() => {
-  //     localStorage.setItem('cart', JSON.stringify(cart));
-  //   }, [cart]);   SE GUARDA EN EL HEADER Y ASÍ ESTÁ ESCUCHANDO CONSTANTEMENTE, se evita repetir código aquí y en component > Cart
+  useEffect(() => {
+    localStorage.setItem('cart', JSON.stringify(cart));
+  }, [cart]); //SE GUARDA EN EL HEADER Y ASÍ ESTÁ ESCUCHANDO CONSTANTEMENTE, se evita repetir código aquí y en component > Cart
 
   const product = products.map(product => {
     return (
