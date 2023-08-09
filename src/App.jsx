@@ -20,9 +20,9 @@ function App() {
             <OrdersProvider>
               <Header />
               <Routes>
-                <Route path="/" element={<Login />} />
+                <Route path="/login" element={<Login />} />
                 <Route path="/profile" element={<Profile />} />
-                <Route path="/home" element={<Products />} />
+                <Route path="/" element={<Products />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/register" element={<Register />} />
               </Routes>

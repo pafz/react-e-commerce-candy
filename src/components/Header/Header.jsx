@@ -43,7 +43,7 @@ const Header = () => {
         ) : (
           <>
             <span>
-              <Link to="/home">Home | </Link>
+              <Link to="/home">| Home | </Link>
             </span>
             <span>
               <Link to="/register"> Register | </Link>

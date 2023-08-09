@@ -1,5 +1,11 @@
 const users = (state, action) => {
   switch (action.type) {
+    case 'CREATE':
+      return {
+        ...state,
+        user: action.payload,
+        //FIXME: ???
+      };
     case 'GET_USER_INFO':
       return {
         ...state,

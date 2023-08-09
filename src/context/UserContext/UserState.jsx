@@ -15,6 +15,14 @@ export const UserContext = createContext(initialState);
 export const UserProvider = ({ children }) => {
   const [state, dispatch] = useReducer(UserReducer, initialState);
 
+  const create = async newUserData => {
+    const res = await axios.post(API_URL + '/users', newUserData);
+    dispatch({
+      type: 'CREATE',
+      payload: res.data,
+    });
+  };
+
   const login = async user => {
     const res = await axios.post(API_URL + '/users/login', user);
     dispatch({
@@ -77,6 +85,7 @@ export const UserProvider = ({ children }) => {
         token: state.token,
         user: state.user,
         ordersProducts: state.ordersProducts,
+        create,
         login,
         getUserInfo,
         logout,

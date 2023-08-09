@@ -1,5 +1,8 @@
 import React from 'react';
-import { useState } from 'react'; // ant.design   is necesary to use useContext???
+import { useContext, useEffect } from 'react'; // ant.design   is necesary to use useContext???
+import { UserContext } from '../../context/UserContext/UserState';
+import { useNavigate } from 'react-router-dom';
+
 import {
   Button,
   Checkbox,
@@ -77,25 +80,14 @@ const tailFormItemLayout = {
 };
 
 const Register = () => {
+  const { create } = useContext(UserContext);
+  const navigate = useNavigate();
+
   const [form] = Form.useForm();
 
   const onFinish = values => {
-    console.log('Received values of form: ', values);
+    create(values);
   };
-  const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-  const onWebsiteChange = value => {
-    if (!value) {
-      setAutoCompleteResult([]);
-    } else {
-      setAutoCompleteResult(
-        ['.com', '.org', '.net'].map(domain => `${value}${domain}`)
-      );
-    }
-  };
-  const websiteOptions = autoCompleteResult.map(website => ({
-    label: website,
-    value: website,
-  }));
 
   return (
     <Form
@@ -112,10 +104,9 @@ const Register = () => {
       }}
       scrollToFirstError
     >
-      /// ????? Ad Regex: more validations and bday validation case age
       <Form.Item
-        name="nickname"
-        label="Nickname"
+        name="name"
+        label="Name"
         tooltip="What do you want others to call you?"
         rules={[
           {
@@ -201,9 +192,9 @@ const Register = () => {
         ]}
       >
         <Select placeholder="select your gender">
-          <Option value="male">F</Option>
-          <Option value="female">M</Option>
-          <Option value="other">None</Option>
+          <Option value="F">F</Option>
+          <Option value="M">M</Option>
+          <Option value="none">None</Option>
         </Select>
       </Form.Item>
       <Form.Item
