@@ -89,6 +89,15 @@ const Register = () => {
     create(values);
   };
 
+  //FIXME: avoid a kid sign up. In that case, sign up as a user kid by dafult. Avoid an really old date.
+  const ofLegalAge = ({ user }) => {
+    let year = getFullYear();
+    console.log(user.date);
+  };
+  //FIXME: name validation etc
+  //FIXME: captcha working, a link down
+  //FIXME: aggrement modal or similar
+
   return (
     <Form
       {...formItemLayout}
@@ -249,3 +258,4 @@ const Register = () => {
 
 export default Register;
 //https://ant.design/components/form   Registration -> Fill in this form to create a new account for you. -> JS
+//https://stackoverflow.com/questions/40644615/how-to-use-google-recaptcha-in-the-ant-design-form-component TODO: use captcha https://developers.google.com/recaptcha/old/docs/customization
