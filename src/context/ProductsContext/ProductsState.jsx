@@ -21,11 +21,20 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
-  //FIXME:
   const getById = async id => {
     const res = await axios.get(API_URL + '/products/getById/' + id);
     dispatch({
       type: 'GET_PRODUCT_BY_ID',
+      payload: res.data,
+    });
+  };
+
+  const getAllByName = async searchTerm => {
+    const res = await axios.get(
+      API_URL + '/products/getAllByName/' + searchTerm
+    );
+    dispatch({
+      type: 'GET_PRODUCTS',
       payload: res.data,
     });
   };
@@ -55,10 +64,11 @@ export const ProductsProvider = ({ children }) => {
       value={{
         products: state.products,
         product: state.product,
+        cart: state.cart,
         getProducts,
         getById,
+        getAllByName,
         addCart,
-        cart: state.cart,
         clearCart,
         clearItem,
       }}

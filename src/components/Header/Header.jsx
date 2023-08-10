@@ -1,5 +1,5 @@
 import './Header.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
@@ -24,6 +24,7 @@ const Header = () => {
   return (
     <nav className="header">
       <span>≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋ Header ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋</span>
+
       <div>
         {token ? (
           <>
