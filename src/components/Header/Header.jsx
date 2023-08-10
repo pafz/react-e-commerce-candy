@@ -18,7 +18,7 @@ const Header = () => {
   };
 
   useEffect(() => {
-    localStorage.setItem('card', JSON.stringify(cart));
+    localStorage.setItem('cart', JSON.stringify(cart));
   }, [cart]);
 
   return (
@@ -37,19 +37,19 @@ const Header = () => {
               <Link to="/cart">Cart | </Link>
             </span>
             <span>
-              <Link to="/home">Home | </Link>
+              <Link to="/">Home | </Link>
             </span>
           </>
         ) : (
           <>
             <span>
-              <Link to="/home">| Home | </Link>
+              <Link to="/">| Home | </Link>
             </span>
             <span>
               <Link to="/register"> Register | </Link>
             </span>
             <span>
-              <Link to="/">Login | </Link>
+              <Link to="/login">Login | </Link>
             </span>
           </>
         )}

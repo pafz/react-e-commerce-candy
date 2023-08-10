@@ -7,6 +7,7 @@ import { UserProvider } from './context/UserContext/UserState';
 import Footer from './components/Footer/Footer';
 import { ProductsProvider } from './context/ProductsContext/ProductsState';
 import Products from './components/Products/Products';
+import Product from './components/Product/Product';
 import Cart from './components/Cart/Cart';
 import { OrdersProvider } from './context/OrdersContext/OrdersState';
 import Register from './components/Register/Register';
@@ -25,6 +26,7 @@ function App() {
                 <Route path="/" element={<Products />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/register" element={<Register />} />
+                <Route path="/product/:id" element={<Product />} />
               </Routes>
               <Footer />
             </OrdersProvider>
