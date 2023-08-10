@@ -13,8 +13,15 @@ const Product = () => {
   if (!product) {
     return <div>Loading...</div>;
   }
-
-  return <div>Product: {product.name}</div>;
+  console.log(product);
+  return (
+    <div>
+      <p>Name: {product.name}</p>
+      <p>Description: {product.description}</p>
+      <p>Favorite: {product.favorite}</p>
+      <p>Price: {product.price}</p>
+    </div>
+  );
 };
 
 export default Product;
