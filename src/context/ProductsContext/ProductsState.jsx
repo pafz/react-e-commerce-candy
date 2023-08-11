@@ -39,6 +39,22 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
+  //TODO: hardcoded
+  // const getProductsBetweenPrice = async ({ priceLow, priceHigh }) => {
+  //   const res = await axios.get(
+  //     API_URL +
+  //       '/products/getProductsBetweenPrice/' +
+  //       { priceLow: 0, priceHigh: 1 }
+  //   );
+  //   console.log('priceLow: ' + priceLow);
+  //   console.log('priceHigh: ' + priceHigh);
+
+  //   dispatch({
+  //     type: 'GET_PRODUCTS',
+  //     payload: res.data,
+  //   });
+  // };
+
   const addCart = product => {
     dispatch({
       type: 'ADD_CART',
@@ -68,6 +84,7 @@ export const ProductsProvider = ({ children }) => {
         getProducts,
         getById,
         getAllByName,
+        // getProductsBetweenPrice,
         addCart,
         clearCart,
         clearItem,
