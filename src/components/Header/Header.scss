@@ -1,0 +1,39 @@
+@import './../../colors.scss';
+
+.headerNav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    // padding: 10px;
+    // margin-top: 50px;
+    z-index:10;
+}
+
+.headerTitle{
+    display:flex;
+    flex-direction:row;
+    flex-wrap:wrap;
+    justify-content:center;
+    align-items:unset;
+    align-content:flex-start;
+    // height:100vh; /*Este valor lo puedes omitir si la altura de tu componente esta definida*/
+    background-color: $magenta;
+  }
+
+  .loggedInMenu{
+    background-color: $green
+  }
+
+  .unloggedMenu{
+    background-color: $magenta
+  }
+
+  /*DOESN'T WORK*/
+  .headerCart{
+    margin: 5px; 
+    color: $orange;
+    width: 2%;
+  } 
+
+

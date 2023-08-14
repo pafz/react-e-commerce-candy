@@ -1,3 +1,4 @@
+import './Profile.scss';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
 //TODO: change Uppercase Products.map line 36
@@ -21,7 +22,7 @@ const Profile = () => {
   return (
     <>
       <div key={user.id}>
-        Your profile
+        <h2>Your profile</h2>
         <p>name: {user.name}</p>
         <p>bday: {user.bday}</p>
         <p>mail: {user.mail}</p>

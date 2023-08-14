@@ -8,13 +8,24 @@ const initialState = {
   products: [],
   cart: cart ? cart : [],
   product: null,
+  filters: {},
 };
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ProductsReducer, initialState);
 
-  const getProducts = async () => {
-    const res = await axios.get(API_URL + '/products/getProducts');
+  const getProducts = async filters => {
+    let query = '?';
+
+    if (filters?.name) {
+      query += 'name=' + filters.name;
+    }
+
+    if (filters?.low && filters?.high) {
+      query += '&low=' + filters.low + '&high=' + filters.high;
+    }
+
+    const res = await axios.get(API_URL + '/products/getProducts' + query);
     dispatch({
       type: 'GET_PRODUCTS',
       payload: res.data,
@@ -29,26 +40,21 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
-  const getAllByName = async searchTerm => {
-    const res = await axios.get(
-      API_URL + '/products/getAllByName/' + searchTerm
-    );
-    dispatch({
-      type: 'GET_PRODUCTS',
-      payload: res.data,
-    });
-  };
+  // const getAllByName = async searchTerm => {
+  //   const res = await axios.get(
+  //     API_URL + '/products/getAllByName/' + searchTerm
+  //   );
+  //   dispatch({
+  //     type: 'GET_PRODUCTS',
+  //     payload: res.data,
+  //   });
+  // };
 
   //TODO: hardcoded
-  // const getProductsBetweenPrice = async ({ priceLow, priceHigh }) => {
+  // const getProductsBetweenPrice = async ({ low, high }) => {
   //   const res = await axios.get(
-  //     API_URL +
-  //       '/products/getProductsBetweenPrice/' +
-  //       { priceLow: 0, priceHigh: 1 }
+  //     API_URL + '/products/getProductsBetweenPrice/' + { low: 0, high: 1 }
   //   );
-  //   console.log('priceLow: ' + priceLow);
-  //   console.log('priceHigh: ' + priceHigh);
-
   //   dispatch({
   //     type: 'GET_PRODUCTS',
   //     payload: res.data,
@@ -74,6 +80,13 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
+  const setFilters = filters => {
+    dispatch({
+      type: 'SET_FILTERS',
+      payload: filters,
+    });
+  };
+
   ///// return debe ir fuera de las funciones, devuelve lo que se introduzca para hacerlo global y devolverla, para usarla en cualquier parte
   return (
     <ProductsContext.Provider
@@ -81,13 +94,15 @@ export const ProductsProvider = ({ children }) => {
         products: state.products,
         product: state.product,
         cart: state.cart,
+        filters: state.filters,
         getProducts,
         getById,
-        getAllByName,
+        // getAllByName,
         // getProductsBetweenPrice,
         addCart,
         clearCart,
         clearItem,
+        setFilters,
       }}
     >
       {children}

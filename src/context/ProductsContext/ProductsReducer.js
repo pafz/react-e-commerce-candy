@@ -26,6 +26,11 @@ const ProductsReducer = (state, action) => {
         product: null,
         products: action.payload,
       };
+    case 'SET_FILTERS':
+      return {
+        ...state,
+        filters: { ...state.filters, ...action.payload },
+      };
     default:
       return state;
   }

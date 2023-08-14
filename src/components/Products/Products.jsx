@@ -7,7 +7,8 @@ import { Slider, Switch } from 'antd';
 const { Search } = Input;
 
 const Products = () => {
-  const { getProducts, products, addCart, getAllByName } =
+  //if searchTerm is empty -> not search
+  const { getProducts, products, addCart, filters, setFilters } =
     useContext(ProductsContext);
 
   const [disabled, setDisabled] = useState(false);
@@ -17,12 +18,8 @@ const Products = () => {
   };
 
   useEffect(() => {
-    getProducts();
-  }, []);
-
-  const searchProducts = searchTerm => {
-    getAllByName(searchTerm);
-  };
+    getProducts(filters);
+  }, [filters]);
 
   const product = products.map(product => {
     return (
@@ -41,7 +38,9 @@ const Products = () => {
       <Space direction="vertical">
         <Search
           placeholder="search product"
-          onSearch={searchProducts}
+          onSearch={searchTerm => {
+            setFilters({ name: searchTerm });
+          }}
           style={{
             width: 200,
           }}
@@ -54,6 +53,9 @@ const Products = () => {
         max={40}
         defaultValue={[1, 10]}
         disabled={disabled}
+        onAfterChange={([low, high]) => {
+          setFilters({ low, high });
+        }}
       />
       Disabled: <Switch size="small" checked={disabled} onChange={onChange} />
       <div>{product}</div>
