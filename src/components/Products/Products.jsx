@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom';
 import { Space, Input, Slider, Card, Button } from 'antd';
 import './../../colors.scss';
 import './Products.scss';
+import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 //TODO: usar button como component
 
 const { Search } = Input;
@@ -38,19 +39,36 @@ const Products = () => {
           width: '50%',
           alignItems: 'center',
           border: '3px solid green',
-          padding: '2%',
+          padding: '1%',
         }}
       >
         <Space direction="vertical">
           <Search
+            className="search_text"
             placeholder="search product"
             onSearch={searchTerm => {
               setFilters({ name: searchTerm });
             }}
           />
         </Space>
+        //TODO: Product context
         <div className="search_price_text">
-          <p className="search_price">search ₿</p>
+          <p className="search_price">
+            search ₿
+            <CaretUpOutlined
+              className="ant_icon"
+              onClick={() => {
+                console.log('up');
+              }}
+            />
+            <CaretDownOutlined
+              className="ant_icon"
+              onClick={() => {
+                console.log('up');
+              }}
+            />
+          </p>
+
           <Slider
             style={{ color: 'green' }}
             range={{
@@ -113,3 +131,4 @@ const Products = () => {
 export default Products;
 //https://ant.design/components/card
 //https://ant.design/components/button
+//https://ant.design/components/icon
