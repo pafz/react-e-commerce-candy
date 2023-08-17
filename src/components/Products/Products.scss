@@ -1,0 +1,36 @@
+@import './../../colors.scss';
+
+.products-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap:5px;
+    padding: 10px;
+}
+
+.title {
+    text-align: center;
+    color: $magenta;
+    text-decoration-line: overline;
+
+}
+
+.product_name {
+    color: $magenta;
+}
+
+//TODO: change properties inside className, not in the jsx
+.site-button-ghost-wrapper{
+    color: aquamarine;
+}
+
+.search_price {
+    color: $gray;
+}
+
+.search_price_text {
+    padding: 5% 3%;
+    width: 240;
+    color: 'red';
+    background: '#d4adcf';
+}

@@ -11,13 +11,16 @@
   },
   "dependencies": {
     "@ant-design/icons": "^5.2.5",
+    "@craco/craco": "^7.1.0",
+    "add": "^2.0.6",
     "antd": "^5.7.3",
     "axios": "^1.4.0",
     "cors": "^2.8.5",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.14.2",
-    "sass": "^1.64.1"
+    "sass": "^1.64.1",
+    "yard": "^1.0.3"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
