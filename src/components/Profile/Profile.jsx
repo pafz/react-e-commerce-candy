@@ -6,8 +6,8 @@ import { Table, Divider, List, Typography } from 'antd';
 
 const columns = [
   { title: 'id', dataIndex: 'id', key: 'id' },
-  { title: 'date', dataIndex: 'date', key: 'date' },
-  { title: 'total', dataIndex: 'total', key: 'total' },
+  { title: 'date', dataIndex: 'createdAt', key: 'date' },
+  { title: 'total', dataIndex: 'payment', key: 'total' },
   {
     title: 'Action',
     dataIndex: '',
@@ -45,26 +45,6 @@ const Profile = () => {
     user.updatedAt,
   ];
 
-  //FIXME: list doesnt have values
-  const order = ordersProducts.map(order => {
-    return (
-      <div key={order.id}>
-        <p>hi</p>
-        {{ key: order.id, date: order.createdAt, total: order.payment }},
-        <span>
-          {order.Products.map(product => {
-            return (
-              <span>
-                {product.id} - {product.name}
-              </span>
-            );
-          })}
-        </span>
-      </div>
-    );
-  });
-
-  console.log(ordersProducts);
   return (
     <>
       <div className="div_list_user_profile">
@@ -88,40 +68,19 @@ const Profile = () => {
       <div className="div_table_user_profile_products">
         <Table
           columns={columns}
+          dataSource={ordersProducts}
+          rowKey="id"
           expandable={{
-            expandedRowRender: product => (
-              <p
-                style={{
-                  margin: 0,
-                }}
-              >
-                {product.name}
-              </p>
+            expandedRowRender: order => (
+              <ul>
+                {order.Products.map(product => (
+                  <li key={product.id}>{product.name}</li>
+                ))}
+              </ul>
             ),
             rowExpandable: product => product.name !== 'Not Expandable',
           }}
-          dataSource={order}
         />
-        <div>
-          <ul>
-            {ordersProducts.map(order => {
-              return (
-                <li key={order.id}>
-                  {order.id} - {order.createdAt} - TOTAL: {order.payment}
-                  <ul>
-                    {order.Products.map(product => {
-                      return (
-                        <li>
-                          {product.id} - {product.name}
-                        </li>
-                      );
-                    })}
-                  </ul>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
       </div>
     </>
   );
