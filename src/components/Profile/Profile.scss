@@ -1,8 +1,28 @@
 @import './../../colors.scss';
 
-//FIXME: position relative to menu
-h2 {
-    color: $magenta;
-    position: relative;
-    margin-top: 90px;
+.div_list_user_profile{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: '1px solid';
+    border-color: 'red';
+    padding: 5% 23%;
 }
+
+.header-footer {
+    color: $gum;
+    text-shadow: 1px 1px $cloud;
+
+    border-block-end: 1px black;
+
+}
+
+.div_table_user_profile_products{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    border: '1px solid';
+    border-color: 'red';
+    padding: 5% 13%;
+}
+
