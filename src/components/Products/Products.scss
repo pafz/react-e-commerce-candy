@@ -4,8 +4,7 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    gap:5px;
-    padding: 10px;
+    gap:3%;
 }
 
 .title {
@@ -38,7 +37,10 @@
 .search_text:hover {
     box-shadow: 0 0 4px $green;
 }
-
 .ant_icon:hover {
     box-shadow: 0 0 4px $green;
+}
+
+.p {
+    color: #0f1111;
 }

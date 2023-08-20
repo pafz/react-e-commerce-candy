@@ -90,9 +90,10 @@ const Products = () => {
               hoverable
               style={{
                 width: 240,
-                borderColor: 'red',
-                color: 'red',
-                background: '#d4adcf',
+                border: '1px solid #f49cbb',
+                boxShadow: '5px 10px #cbeef3',
+                borderBlockEnd: '1px solid black',
+                margin: '1%',
               }}
               title={product.favorite}
               cover={
@@ -106,7 +107,6 @@ const Products = () => {
                 <Link
                   to={'/product/' + product.id}
                   style={{
-                    color: 'red',
                     fontSize: '150%',
                   }}
                 >

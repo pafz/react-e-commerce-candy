@@ -1,182 +1,11 @@
-import React, { useContext, useEffect, useRef, useState } from 'react';
+import { useContext, useEffect, useRef, useState } from 'react';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 import { OrderContext } from '../../context/OrdersContext/OrdersState';
-import { Button, Form, Input, Popconfirm, Table } from 'antd';
+import { Button, Table, Modal } from 'antd';
 import './Cart.scss';
-
-const EditableContext = React.createContext(null);
-
-const EditableRow = ({ index, ...props }) => {
-  const [form] = Form.useForm();
-  return (
-    <Form form={form} component={false}>
-      <EditableContext.Provider value={form}>
-        <tr {...props} />
-      </EditableContext.Provider>
-    </Form>
-  );
-};
-const EditableCell = ({
-  title,
-  editable,
-  children,
-  dataIndex,
-  record,
-  handleSave,
-  ...restProps
-}) => {
-  const [editing, setEditing] = useState(false);
-  const inputRef = useRef(null);
-  const form = useContext(EditableContext);
-  useEffect(() => {
-    if (editing) {
-      inputRef.current.focus();
-    }
-  }, [editing]);
-  const toggleEdit = () => {
-    setEditing(!editing);
-    form.setFieldsValue({
-      [dataIndex]: record[dataIndex],
-    });
-  };
-  const save = async () => {
-    try {
-      const values = await form.validateFields();
-      toggleEdit();
-      handleSave({
-        ...record,
-        ...values,
-      });
-    } catch (errInfo) {
-      console.log('Save failed:', errInfo);
-    }
-  };
-  let childNode = children;
-  if (editable) {
-    childNode = editing ? (
-      <Form.Item
-        style={{
-          margin: 0,
-        }}
-        name={dataIndex}
-        rules={[
-          {
-            required: true,
-            message: `${title} is required.`,
-          },
-        ]}
-      >
-        <Input ref={inputRef} onPressEnter={save} onBlur={save} />
-      </Form.Item>
-    ) : (
-      <div
-        className="editable-cell-value-wrap"
-        style={{
-          paddingRight: 24,
-        }}
-        onClick={toggleEdit}
-      >
-        {children}
-      </div>
-    );
-  }
-  return <td {...restProps}>{childNode}</td>;
-};
+import { DeleteOutlined } from '@ant-design/icons';
 
 const Cart = () => {
-  const [dataSource, setDataSource] = useState([
-    {
-      key: '0',
-      name: 'Edward King 0',
-      price: '32 ₿',
-      address: 'London, Park Lane no. 0',
-    },
-    {
-      key: '1',
-      name: 'Edward King 1',
-      price: '32 ₿',
-      address: 'London, Park Lane no. 1',
-    },
-  ]);
-
-  const [count, setCount] = useState(2);
-  const handleDelete = key => {
-    const newData = dataSource.filter(item => item.key !== key);
-    setDataSource(newData);
-  };
-
-  const defaultColumns = [
-    {
-      title: 'product',
-      dataIndex: 'product',
-      width: '30%',
-      editable: true,
-    },
-    {
-      title: 'price ₿',
-      dataIndex: 'price',
-      width: '20%',
-    },
-    {
-      title: 'address',
-      dataIndex: 'address',
-    },
-    {
-      title: 'operation',
-      dataIndex: 'operation',
-      render: (_, record) =>
-        dataSource.length >= 1 ? (
-          <Popconfirm
-            title="Sure to delete?"
-            onConfirm={() => handleDelete(record.key)}
-          >
-            <a>Delete</a>
-          </Popconfirm>
-        ) : null,
-    },
-  ];
-
-  const handleAdd = () => {
-    const newData = {
-      key: count,
-      name: `Edward King ${count}`,
-      age: '32',
-      address: `London, Park Lane no. ${count}`,
-    };
-    setDataSource([...dataSource, newData]);
-    setCount(count + 1);
-  };
-  const handleSave = row => {
-    const newData = [...dataSource];
-    const index = newData.findIndex(item => row.key === item.key);
-    const item = newData[index];
-    newData.splice(index, 1, {
-      ...item,
-      ...row,
-    });
-    setDataSource(newData);
-  };
-  const components = {
-    body: {
-      row: EditableRow,
-      cell: EditableCell,
-    },
-  };
-  const columns = defaultColumns.map(col => {
-    if (!col.editable) {
-      return col;
-    }
-    return {
-      ...col,
-      onCell: record => ({
-        record,
-        editable: col.editable,
-        dataIndex: col.dataIndex,
-        title: col.title,
-        handleSave,
-      }),
-    };
-  });
   const { cart, clearCart, clearItem } = useContext(ProductsContext);
   const { createOrder, token } = useContext(OrderContext);
 
@@ -189,50 +18,134 @@ const Cart = () => {
     clearCart();
   };
 
-  const cartItem = cart.map((cartItem, i) => {
-    return (
-      <div key={i}>
-        <span>{cartItem.name}</span>
-        <span>{cartItem.price.toFixed(2)} ₿</span>
-        <button onClick={() => clearItem()}>clear item</button>
-      </div>
-    );
-  });
+  // const [count, setCount] = useState(2);
+
+  const handleDelete = record => {
+    Modal.confirm({
+      title: 'Sure to delete?',
+      okText: 'Yes',
+      okType: 'danger',
+      onOk: () => {
+        // setDataSource(cart => {
+        //   return cart.filter(item => item.id !== record.id);
+        // });
+        clearItem();
+      },
+    });
+  };
+
+  const columns = [
+    {
+      title: 'product',
+      dataIndex: 'product',
+      width: '30%',
+      key: 'product',
+    },
+    {
+      title: 'price₿',
+      dataIndex: 'price₿',
+      width: '20%',
+      key: 'price₿',
+    },
+    {
+      title: 'date',
+      dataIndex: 'date',
+      key: 'date',
+    },
+    {
+      title: 'delete',
+      key: 'delete',
+      render: record =>
+        cart.length >= 1 ? (
+          <>
+            <DeleteOutlined
+              onClick={() => handleDelete(record)}
+              style={{ color: 'red', marginLeft: 12 }}
+            />
+            {/* <Popconfirm
+              title="Sure to delete?"
+              onConfirm={() => handleDelete(record.key)}
+            >
+              <a>Delete</a>
+            </Popconfirm> */}
+          </>
+        ) : null,
+    },
+    {
+      title: 'total',
+      dataIndex: 'total',
+      key: 'total',
+    },
+  ];
+
+  // const handleSave = row => {
+  //   const newData = [...dataSource];
+  //   const index = newData.findIndex(item => row.key === item.key);
+  //   const item = newData[index];
+  //   newData.splice(index, 1, {
+  //     ...item,
+  //     ...row,
+  //   });
+  //   setDataSource(newData);
+  // };
+
+  // const columns = defaultColumns.map(col => {
+  //   if (!col.editable) {
+  //     return col;
+  //   }
+  //   return {
+  //     ...col,
+  //     onCell: record => ({
+  //       record,
+  //       editable: col.editable,
+  //       dataIndex: col.dataIndex,
+  //       title: col.title,
+  //       handleSave,
+  //     }),
+  //   };
+  // });
+  // const cartItem = cart.map((cartItem, i) => {
+  //   return (
+  //     <div key={i}>
+  //       <span>{cartItem.name}</span>
+  //       <span>{cartItem.price.toFixed(2)} ₿</span>
+  //       <button onClick={() => clearItem()}>clear item</button>
+  //     </div>
+  //   );
+  // });
+
   return (
     <div>
+      <Table columns={columns} bordered dataSource={cart} />
+
       <Button
-        onClick={handleAdd}
+        onClick={() => {
+          clearCart();
+        }}
         type="primary"
         style={{
           marginBottom: 16,
         }}
       >
-        Add a row
+        Clear cart
       </Button>
-      <Table
-        components={components}
-        rowClassName={() => 'editable-row'}
-        bordered
-        dataSource={dataSource}
-        columns={columns}
-      />
-    </div>
-  );
 
-  return (
-    <div>
-      {cartItem}
-      <button onClick={() => clearCart()}>Clear cart</button>
-      <button
+      <Button
         onClick={() => {
           createNewOrder(cart);
           clearCart();
         }}
+        type="primary"
+        style={{
+          marginBottom: 16,
+        }}
       >
         Create order
-      </button>
+      </Button>
     </div>
   );
 };
 
 export default Cart;
+//https://ant.design/components/table#components-table-demo-ellipsis-custom-tooltip Editable Cells
+//https://www.youtube.com/watch?v=y4_nSE-aZhc
