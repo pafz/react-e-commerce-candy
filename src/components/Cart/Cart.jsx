@@ -10,15 +10,17 @@ const Cart = () => {
   const { createOrder, token } = useContext(OrderContext);
 
   if (cart.length <= 0) {
-    return <span>Your cart is empty</span>;
+    return (
+      <div className="cart_products">
+        <h1>Your cart is empty</h1>
+      </div>
+    );
   }
 
-  const createNewOrder = () => {
+  const createNewOrder = (cart, token) => {
     createOrder(cart, token);
     clearCart();
   };
-
-  // const [count, setCount] = useState(2);
 
   const handleDelete = record => {
     Modal.confirm({
@@ -26,9 +28,6 @@ const Cart = () => {
       okText: 'Yes',
       okType: 'danger',
       onOk: () => {
-        // setDataSource(cart => {
-        //   return cart.filter(item => item.id !== record.id);
-        // });
         clearItem();
       },
     });
@@ -37,20 +36,15 @@ const Cart = () => {
   const columns = [
     {
       title: 'product',
-      dataIndex: 'product',
+      dataIndex: 'name',
       width: '30%',
       key: 'product',
     },
     {
-      title: 'price₿',
-      dataIndex: 'price₿',
+      title: 'price ₿',
+      dataIndex: 'price',
       width: '20%',
       key: 'price₿',
-    },
-    {
-      title: 'date',
-      dataIndex: 'date',
-      key: 'date',
     },
     {
       title: 'delete',
@@ -62,86 +56,48 @@ const Cart = () => {
               onClick={() => handleDelete(record)}
               style={{ color: 'red', marginLeft: 12 }}
             />
-            {/* <Popconfirm
-              title="Sure to delete?"
-              onConfirm={() => handleDelete(record.key)}
-            >
-              <a>Delete</a>
-            </Popconfirm> */}
           </>
         ) : null,
     },
-    {
-      title: 'total',
-      dataIndex: 'total',
-      key: 'total',
-    },
   ];
 
-  // const handleSave = row => {
-  //   const newData = [...dataSource];
-  //   const index = newData.findIndex(item => row.key === item.key);
-  //   const item = newData[index];
-  //   newData.splice(index, 1, {
-  //     ...item,
-  //     ...row,
-  //   });
-  //   setDataSource(newData);
-  // };
-
-  // const columns = defaultColumns.map(col => {
-  //   if (!col.editable) {
-  //     return col;
-  //   }
-  //   return {
-  //     ...col,
-  //     onCell: record => ({
-  //       record,
-  //       editable: col.editable,
-  //       dataIndex: col.dataIndex,
-  //       title: col.title,
-  //       handleSave,
-  //     }),
-  //   };
-  // });
-  // const cartItem = cart.map((cartItem, i) => {
-  //   return (
-  //     <div key={i}>
-  //       <span>{cartItem.name}</span>
-  //       <span>{cartItem.price.toFixed(2)} ₿</span>
-  //       <button onClick={() => clearItem()}>clear item</button>
-  //     </div>
-  //   );
-  // });
-
   return (
-    <div>
-      <Table columns={columns} bordered dataSource={cart} />
-
-      <Button
-        onClick={() => {
-          clearCart();
-        }}
-        type="primary"
+    <div className="cart_products">
+      <Table
+        columns={columns}
+        bordered
+        dataSource={cart}
         style={{
-          marginBottom: 16,
+          border: '1px solid #f49cbb',
+          boxShadow: '5px 10px #cbeef3',
+          borderBlockEnd: '1px solid black',
+          borderRadius: '6px',
         }}
-      >
-        Clear cart
-      </Button>
+      />
 
-      <Button
-        onClick={() => {
-          createNewOrder(cart);
-          clearCart();
-        }}
-        type="primary"
-        style={{
-          marginBottom: 16,
-        }}
-      >
-        Create order
-      </Button>
+      <div className="buttons">
+        <Button
+          className="clear_button"
+          onClick={() => {
+            clearCart();
+          }}
+          type="primary"
+          style={{ backgroundColor: '#FF0080' }}
+        >
+          Clear cart
+        </Button>
+
+        <Button
+          className="create_button"
+          onClick={() => {
+            createNewOrder(cart, token);
+          }}
+          type="primary"
+          style={{ backgroundColor: '#40E0D0' }}
+        >
+          Create order
+        </Button>
+      </div>
     </div>
   );
 };

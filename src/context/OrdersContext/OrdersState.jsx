@@ -13,6 +13,8 @@ export const OrdersProvider = ({ children }) => {
         // [4, 2]
         {
           productId: order.map(e => e.id),
+          //TODO: Delivery is hardcoded, change it to dynamic value
+          delivery: 1,
         },
         {
           headers: {
