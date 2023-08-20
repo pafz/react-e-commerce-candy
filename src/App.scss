@@ -9,19 +9,22 @@
   margin: 0;
   padding: 0;
 }
-main {
+#main {
+  padding-top: 109px;
+  padding-bottom: 86px;
   align-items: center;
   width: 100%;
 }
 /* Pa */
 
 #root {
-  max-width: 1280px;
-  // margin: 0 auto;
-  // padding: 2rem;
   text-align: center;
 }
 
+.App {
+  padding-top: 109px;
+  padding-bottom: 86px;
+}
 
 @keyframes logo-spin {
   from {

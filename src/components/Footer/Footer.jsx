@@ -1,5 +1,5 @@
 import React from 'react';
-import './Footer';
+import './Footer.scss';
 import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
@@ -29,7 +29,7 @@ const Footer = () => {
 
       <div>
         {token ? (
-          <div className="loggedInMenu">
+          <div>
             <span onClick={logoutUser}>
               <Link to="/"> | Logout | </Link>
             </span>
@@ -44,7 +44,7 @@ const Footer = () => {
             </span>
           </div>
         ) : (
-          <div className="unloggedMenu">
+          <div>
             <span>
               <Link to="/">| Products | </Link>
             </span>
@@ -57,7 +57,6 @@ const Footer = () => {
           </div>
         )}
       </div>
-      {/* </div> */}
     </nav>
   );
 };

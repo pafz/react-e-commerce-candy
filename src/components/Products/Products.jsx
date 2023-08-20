@@ -38,7 +38,6 @@ const Products = () => {
           margin: 'auto',
           width: '50%',
           alignItems: 'center',
-          border: '3px solid green',
           padding: '1%',
         }}
       >
@@ -70,7 +69,6 @@ const Products = () => {
           </p>
 
           <Slider
-            style={{ color: 'green' }}
             range={{
               draggableTrack: true,
             }}
