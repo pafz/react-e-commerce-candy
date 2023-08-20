@@ -1,6 +1,6 @@
 @import './../../colors.scss';
 
-.headerNav {
+.header_nav {
     position: fixed;
     top: 0;
     left: 0;
@@ -10,16 +10,40 @@
     z-index:10;
 }
 
-.headerTitle{
-    display:flex;
-    flex-direction:row;
-    flex-wrap:wrap;
-    justify-content:center;
-    align-items:unset;
-    align-content:flex-start;
-    // height:100vh; /*Este valor lo puedes omitir si la altura de tu componente esta definida*/
-    background-color: $magenta;
-  }
+.container_header_title{
+  display:flex;
+  flex-direction:column;
+  flex-wrap:nowrap;
+  justify-content:flex-start;
+  align-items:unset;
+  align-content:center;
+  background-color: $magenta;
+  padding: 15px;
+}
+
+.header_title{
+  order:0;
+  flex:0 0 auto;
+  align-self:auto;
+  height:20%;
+  width:auto;
+  // font-size:2vw
+}
+
+// .headerTitle{
+//   height: 50px;
+//   text-align: center;
+//     display:flex;
+//     flex-direction:row;
+//     flex-wrap:wrap;
+//     justify-content:center;
+//     align-items:unset;
+//     align-content:flex-start;
+//     // height:100vh; /*Este valor lo puedes omitir si la altura de tu componente esta definida*/
+//     background-color: $magenta;
+
+    
+//   }
 
   .loggedInMenu{
     background-color: $green
@@ -28,12 +52,5 @@
   .unloggedMenu{
     background-color: $magenta
   }
-
-  /*DOESN'T WORK*/
-  .headerCart{
-    margin: 5px; 
-    color: $orange;
-    width: 2%;
-  } 
 
 

@@ -1,12 +1,19 @@
 @import './../../colors.scss';
 
-.footer {
+.footer_nav {
   position: fixed;
-  left: 0;
   bottom: 0;
+  left: 0;
   width: 100%;
+  z-index:10;
   background-color: $orange;
-  color: $white;
-  text-align: center;
-  padding: 50px;
+  border: 2px black solid;
+}
+
+.loggedInMenu{
+  background-color: $green
+}
+
+.unloggedMenu{
+  background-color: $magenta
 }

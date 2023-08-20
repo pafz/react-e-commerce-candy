@@ -25,16 +25,18 @@ const Header = () => {
   }, [cart]);
 
   return (
-    <nav className="headerNav">
-      <span className="headerTitle">
-        ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋ Candy shop ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋
-      </span>
+    <nav className="header_nav">
+      <div className="container_header_title">
+        <p className="header_title">
+          ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋ Candy shop ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋
+        </p>
+      </div>
 
       <div>
         {token ? (
           <div className="loggedInMenu">
             <span onClick={logoutUser}>
-              <Link to="/">Logout | </Link>
+              <Link to="/"> | Logout | </Link>
             </span>
             <span>
               <Link to="/profile">
@@ -73,13 +75,13 @@ const Header = () => {
               </Link>
             </span>
             <span>
-              <Link to="/"> | Home | </Link>
+              <Link to="/"> | Products | </Link>
             </span>
           </div>
         ) : (
           <div className="unloggedMenu">
             <span>
-              <Link to="/">| Home | </Link>
+              <Link to="/">| Products | </Link>
             </span>
             <span>
               <Link to="/register"> Register | </Link>
