@@ -3,7 +3,13 @@ import { Link, useNavigate, useParams } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
-import { ShoppingCartOutlined } from '@ant-design/icons';
+import {
+  HomeOutlined,
+  LoginOutlined,
+  LogoutOutlined,
+  PicRightOutlined,
+  ShoppingCartOutlined,
+} from '@ant-design/icons';
 import { UserOutlined } from '@ant-design/icons';
 import { Badge, Avatar, Space } from 'antd';
 
@@ -35,13 +41,10 @@ const Header = () => {
       <div>
         {token ? (
           <div className="loggedInMenu">
-            <span onClick={logoutUser}>
-              <Link to="/"> | Logout | </Link>
-            </span>
             <span>
               <Link to="/profile">
                 <Space direction="vertical" size={16}>
-                  <Space wrap size={16}>
+                  <Space wrap size={10}>
                     <Avatar
                       shape="circle"
                       size="large"
@@ -75,19 +78,32 @@ const Header = () => {
               </Link>
             </span>
             <span>
-              <Link to="/"> | Products | </Link>
+              <Link to="/">
+                | <HomeOutlined />
+              </Link>
+            </span>
+            <span onClick={logoutUser}>
+              <Link to="/">
+                | <LogoutOutlined />
+              </Link>
             </span>
           </div>
         ) : (
           <div className="unloggedMenu">
             <span>
-              <Link to="/">| Products | </Link>
+              <Link to="/">
+                | <HomeOutlined /> |
+              </Link>
             </span>
             <span>
-              <Link to="/register"> Register | </Link>
+              <Link to="/register">
+                <PicRightOutlined /> |
+              </Link>
             </span>
             <span>
-              <Link to="/login">Login | </Link>
+              <Link to="/login">
+                <LoginOutlined />
+              </Link>
             </span>
           </div>
         )}

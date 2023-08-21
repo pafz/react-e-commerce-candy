@@ -30,9 +30,6 @@ const Footer = () => {
       <div>
         {token ? (
           <div>
-            <span onClick={logoutUser}>
-              <Link to="/"> | Logout | </Link>
-            </span>
             <span>
               <Link to="/profile">Profile | </Link>
             </span>
@@ -41,6 +38,9 @@ const Footer = () => {
             </span>
             <span>
               <Link to="/">Products | </Link>
+            </span>
+            <span onClick={logoutUser}>
+              <Link to="/"> | Logout | </Link>
             </span>
           </div>
         ) : (
