@@ -1,19 +1,13 @@
 import './Profile.scss';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
-import { Table, Divider, List, Typography } from 'antd';
+import { Table, Divider, List, Typography, Spin, Space } from 'antd';
 //TODO: change Uppercase Products.map line 36
 
 const columns = [
   { title: 'id', dataIndex: 'id', key: 'id' },
   { title: 'date', dataIndex: 'createdAt', key: 'date' },
-  { title: 'total', dataIndex: 'payment', key: 'total' },
-  {
-    title: 'Action',
-    dataIndex: '',
-    key: 'x',
-    render: () => <a>repurchase</a>,
-  },
+  { title: 'total ₿', dataIndex: 'payment', key: 'total' },
 ];
 
 const Profile = () => {
@@ -29,7 +23,13 @@ const Profile = () => {
   }, []);
 
   if (!user) {
-    return <span>Cargando...</span>;
+    return (
+      <span>
+        <Space className="spin">
+          <Spin size="large" tip="Loading" />
+        </Space>
+      </span>
+    );
   }
 
   const dataUser = [
@@ -50,11 +50,10 @@ const Profile = () => {
       <div className="div_list_user_profile">
         <List
           size="small"
-          header={<div className="header-footer">Your profile</div>}
-          footer={<div className="header-footer">Your profile</div>}
+          header={<div className="header-footer">{user.name}'s profile</div>}
+          footer={<div className="header-footer">{user.name}'s profile</div>}
           bordered
           grid={{ gutter: 12, column: 2 }}
-          //TODO: loading SpinProps
           style={{
             border: '1px solid #f49cbb',
             boxShadow: '5px 10px #cbeef3',
@@ -87,4 +86,6 @@ const Profile = () => {
 };
 
 export default Profile;
+//https://ant.design/components/form
 //https://ant.design/components/table#components-table-demo-ellipsis-custom-tooltip
+//https://ant.design/components/spin
