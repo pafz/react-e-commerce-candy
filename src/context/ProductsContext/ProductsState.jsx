@@ -74,9 +74,10 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
-  const clearItem = () => {
+  const clearItem = product => {
     dispatch({
       type: 'CLEAR_ITEM',
+      payload: product,
     });
   };
 

@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from 'react';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 import { OrderContext } from '../../context/OrdersContext/OrdersState';
-import { Button, Table, Modal } from 'antd';
+import { Button, Table, Popconfirm } from 'antd';
 import './Cart.scss';
 import { DeleteOutlined } from '@ant-design/icons';
 
@@ -22,17 +22,6 @@ const Cart = () => {
     clearCart();
   };
 
-  const handleDelete = record => {
-    Modal.confirm({
-      title: 'Sure to delete?',
-      okText: 'Yes',
-      okType: 'danger',
-      onOk: () => {
-        clearItem();
-      },
-    });
-  };
-
   const columns = [
     {
       title: 'product',
@@ -49,24 +38,32 @@ const Cart = () => {
     {
       title: 'delete',
       key: 'delete',
-      render: record =>
-        cart.length >= 1 ? (
-          <>
-            <DeleteOutlined
-              onClick={() => handleDelete(record)}
-              style={{ color: 'red', marginLeft: 12 }}
-            />
-          </>
-        ) : null,
+      render: (text, record, index) => {
+        console.log(index);
+        return (
+          <Popconfirm
+            title="Sure to delete?"
+            onConfirm={() => clearItem(index)}
+          >
+            <Button type="primary" danger>
+              <DeleteOutlined />
+              Delete
+            </Button>
+          </Popconfirm>
+        );
+      },
     },
   ];
+
+  const products = cart.map((product, index) => ({ ...product, key: index }));
 
   return (
     <div className="cart_products">
       <Table
         columns={columns}
         bordered
-        dataSource={cart}
+        dataSource={products}
+        rowKey="key"
         style={{
           border: '1px solid #f49cbb',
           boxShadow: '5px 10px #cbeef3',

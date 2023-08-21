@@ -21,10 +21,10 @@ const ProductsReducer = (state, action) => {
         cart: [],
       };
     case 'CLEAR_ITEM':
+      console.log(action);
       return {
         ...state,
-        product: null,
-        products: action.payload,
+        cart: state.cart.filter((product, index) => index != action.payload),
       };
     case 'SET_FILTERS':
       return {
