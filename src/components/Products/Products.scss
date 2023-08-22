@@ -9,13 +9,13 @@
 
 .title {
     text-align: center;
-    color: $magenta;
+    color: $pink;
     text-decoration-line: overline;
 
 }
 
 .product_name {
-    color: $magenta;
+    color: $pink;
 }
 
 //TODO: change properties inside className, not in the jsx
@@ -35,10 +35,10 @@
 }
 
 .search_text:hover {
-    box-shadow: 0 0 4px $green;
+    box-shadow: 0 0 4px $aqua;
 }
 .ant_icon:hover {
-    box-shadow: 0 0 4px $green;
+    box-shadow: 0 0 4px $aqua;
 }
 
 .p {

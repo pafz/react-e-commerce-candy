@@ -92,7 +92,7 @@ const Header = () => {
           <div className="unloggedMenu">
             <span>
               <Link to="/">
-                | <HomeOutlined /> |
+                <HomeOutlined /> |
               </Link>
             </span>
             <span>

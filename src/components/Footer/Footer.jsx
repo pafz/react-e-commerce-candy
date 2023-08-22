@@ -37,7 +37,7 @@ const Footer = () => {
               <Link to="/cart">Cart | </Link>
             </span>
             <span>
-              <Link to="/">Products | </Link>
+              <Link to="/">Products</Link>
             </span>
             <span onClick={logoutUser}>
               <Link to="/"> | Logout | </Link>
@@ -46,7 +46,7 @@ const Footer = () => {
         ) : (
           <div>
             <span>
-              <Link to="/">| Products | </Link>
+              <Link to="/">| Products |</Link>
             </span>
             <span>
               <Link to="/register"> Register | </Link>

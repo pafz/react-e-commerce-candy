@@ -1,0 +1,28 @@
+@import './../../colors.scss';
+
+.register_container{
+    padding: 3% 23%;
+    // border-style: solid;
+    // border-color: red;
+}
+
+.bday_picker {
+    // padding: 4% 11%;
+    //display: inline-flex;
+    display: inline-block;
+    border-style: solid;
+    border-color: red;
+}
+
+.button {
+    // padding: 3% 23%;
+    padding: 3% 23%;
+    // border-style: solid;
+    // border-color: red;
+}
+
+.btn {
+    padding: 3% 34%;
+    background-color: $blue_link;
+
+}
