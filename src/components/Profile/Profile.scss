@@ -29,14 +29,11 @@
 
 .spin {
     padding-top: 160px;
-    color: $lime !important;
 }
 
-.ant-spin-text { color: #020aff !important; }
-
 .ant-spin-dot-item {
-    background-color: blueviolet
-  }
+    background-color: $orange !important
+}
 
 .ant-table-tbody {
     background-color: $lime;

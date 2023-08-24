@@ -28,7 +28,7 @@ const Profile = () => {
     return (
       <span>
         <Space className="spin">
-          <Spin size="large" className="ant-spin-text" />
+          <Spin size="large" />
         </Space>
       </span>
     );
