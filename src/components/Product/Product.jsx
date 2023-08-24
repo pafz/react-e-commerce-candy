@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 import { useParams } from 'react-router-dom';
-import { Col, Divider, Row } from 'antd';
+import { Col, Divider, Row, Space, Spin } from 'antd';
 import './product.scss';
 
 const Product = () => {
