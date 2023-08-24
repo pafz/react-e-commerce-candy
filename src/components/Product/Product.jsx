@@ -13,7 +13,13 @@ const Product = () => {
   }, []);
 
   if (!product) {
-    return <div>Loading...</div>;
+    return (
+      <span>
+        <Space className="spin">
+          <Spin size="large" className="ant-spin-text" />
+        </Space>
+      </span>
+    );
   }
   console.log(product);
   return (
@@ -36,13 +42,8 @@ const Product = () => {
         <Col flex={2}>{product.price}</Col>
       </Row>
     </div>
-    // {/* // <div>
-    // //   <p>Name: {product.name}</p>
-    // //   <p>Description: {product.description}</p>
-    // //   <p>Favorite: {product.favorite}</p>
-    // //   <p>Price: {product.price}</p>
-    // // </div> */}
   );
 };
 
 export default Product;
+//https://ant.design/components/grid
