@@ -1,4 +1,6 @@
 @import './../../colors.scss';
+@import './../../App.scss';
+// @extend './../../App.scss;'
 
 .products-container{
     display: flex;
@@ -43,4 +45,10 @@
 
 .p {
     color: #0f1111;
+}
+
+.card {
+    background-color: $violet;
+    width: 240px;
+    @extend %borders;
 }

@@ -45,6 +45,52 @@
   padding: 2em;
 }
 
+%text {
+  color: $dark_gray;
+  line-height: 1%;
+  text-align: center;
+  text-decoration: none;
+
+}
+
+%list {
+  list-style: square;
+  margin-left: 30%;
+}
+
+%borders {
+  border: 1px solid $pink;
+  box-shadow: 5px 10px $cloud;
+  border-block-end: 1px solid $dark_gray;
+  margin: 1%;
+}
+
+%clear_btn {
+  background-color: $garnet;
+}
+
+%create_btn{
+  background-color: $blue_link;
+}
+
+h3 {
+  color: $garnet;
+}
+
+.anticon {
+  color: $blue_link;
+  text-align: center;
+  font-size: 22px;
+}
+
+.ant-list-item {
+  color: $dark_gray !important;
+}
+
+.ant-table-cell {
+  color: $dark_gray !important;
+}
+
 .read-the-docs {
   color: #888;
 }

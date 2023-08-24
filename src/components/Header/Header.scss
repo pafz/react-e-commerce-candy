@@ -1,5 +1,7 @@
 @import './../../colors.scss';
 
+$padding_menu: 0 1.5%;
+
 .header_nav {
     position: fixed;
     top: 0;
@@ -53,4 +55,29 @@
     background-color: $pink
   }
 
+.user_icon {
+  size: 1px;
+  color: $orange;
+}
 
+.home_svg {
+  padding: $padding_menu;
+}
+
+.register_svg {
+  padding: $padding_menu;
+}
+
+.login_svg {
+  padding: $padding_menu;
+}
+
+.logout_svg {
+  padding: $padding_menu;
+}
+
+.headerCart {
+  padding: $padding_menu ;
+}
+
+sup.ant-scroll-number.ant-badge-count{background-color: $pink !important;}

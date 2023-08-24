@@ -1,4 +1,5 @@
 @import './../../colors.scss';
+@import './../../App.scss';
 
 .cart_products{
   padding: 3% 23%;
@@ -29,4 +30,25 @@
 
 .create_button {
   margin: 1%;
+}
+
+.table_cart {
+  border-radius: 6px;
+  @extend %borders;
+}
+
+.clear_button {
+  @extend %clear_btn;
+}
+
+.create_button {
+  @extend %create_btn;
+}
+
+.delete_button {
+  @extend %clear_btn;
+}
+
+.check_svg {
+  color: $aqua !important;
 }

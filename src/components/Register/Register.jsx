@@ -69,13 +69,11 @@ const Register = () => {
   return (
     <div className="register_container">
       <Form
+        className="form"
         {...formItemLayout}
         form={form}
         name="register"
         onFinish={onFinish}
-        style={{
-          maxWidth: 600,
-        }}
         scrollToFirstError
       >
         <Form.Item
@@ -92,22 +90,15 @@ const Register = () => {
           <Input />
         </Form.Item>
         <Form.Item
+          className="form"
           name="bday"
           label="Bday"
-          style={{
-            maxWidth: 600,
-          }}
           rules={[
             { type: 'date', message: 'The input is not a valid date' },
             { required: true, message: 'Please input your Birthday!' },
           ]}
         >
-          <DatePicker
-            className="bday_picker"
-            style={{
-              display: 'inline-block',
-            }}
-          />
+          <DatePicker className="bday_picker" />
         </Form.Item>
         <Form.Item
           name="mail"

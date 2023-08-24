@@ -31,16 +31,16 @@ const Footer = () => {
         {token ? (
           <div>
             <span>
-              <Link to="/profile">Profile | </Link>
+              <Link to="/profile">Profile |</Link>
             </span>
             <span className="headerCart">
-              <Link to="/cart">Cart | </Link>
+              <Link to="/cart">Cart |</Link>
             </span>
             <span>
-              <Link to="/">Products</Link>
+              <Link to="/">Products | </Link>
             </span>
             <span onClick={logoutUser}>
-              <Link to="/"> | Logout | </Link>
+              <Link to="/">Logout | </Link>
             </span>
           </div>
         ) : (

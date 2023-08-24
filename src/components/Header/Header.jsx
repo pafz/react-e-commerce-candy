@@ -12,6 +12,7 @@ import {
 } from '@ant-design/icons';
 import { UserOutlined } from '@ant-design/icons';
 import { Badge, Avatar, Space } from 'antd';
+//TODO: cart_badge change to backgroundColor
 
 const Header = () => {
   const { token, logout } = useContext(UserContext);
@@ -43,12 +44,12 @@ const Header = () => {
           <div className="loggedInMenu">
             <span>
               <Link to="/profile">
-                <Space direction="vertical" size={16}>
+                <Space direction="vertical" size="small">
                   <Space wrap size={10}>
                     <Avatar
                       shape="circle"
-                      size="large"
-                      icon={<UserOutlined />}
+                      size="middle"
+                      icon={<UserOutlined className="user_icon" />}
                       alt="Your profile"
                       srcSet=""
                     />
@@ -57,34 +58,24 @@ const Header = () => {
                 </Space>
               </Link>
             </span>
+
             <span className="headerCart">
-              <Link to="/cart" style={{ marginRight: '5px' }}>
-                <Badge
-                  count={cart.length}
-                  size="small"
-                  style={{ marginRight: '5px' }}
-                  color="#FF8C00"
-                  width="10%"
-                >
-                  <ShoppingCartOutlined
-                    style={{
-                      color: '#FF8C00',
-                      width: '20%',
-                      marginRight: '5px',
-                      size: '62px',
-                    }}
-                  />
+              <Link to="/cart">
+                <Badge className="cart_badge" count={cart.length} size="middle">
+                  <ShoppingCartOutlined className="cart_svg" />
                 </Badge>
               </Link>
             </span>
+
             <span>
               <Link to="/">
-                | <HomeOutlined />
+                | <HomeOutlined className="home_svg" />
               </Link>
             </span>
+
             <span onClick={logoutUser}>
               <Link to="/">
-                | <LogoutOutlined />
+                | <LogoutOutlined className="logout_svg" />
               </Link>
             </span>
           </div>
@@ -92,17 +83,17 @@ const Header = () => {
           <div className="unloggedMenu">
             <span>
               <Link to="/">
-                <HomeOutlined /> |
+                <HomeOutlined className="home_svg" /> |
               </Link>
             </span>
             <span>
               <Link to="/register">
-                <PicRightOutlined /> |
+                <PicRightOutlined className="register_svg" /> |
               </Link>
             </span>
             <span>
               <Link to="/login">
-                <LoginOutlined />
+                <LoginOutlined className="login_svg" />
               </Link>
             </span>
           </div>

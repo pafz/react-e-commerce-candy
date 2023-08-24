@@ -3,7 +3,7 @@ import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 import { OrderContext } from '../../context/OrdersContext/OrdersState';
 import { Button, Table, Popconfirm } from 'antd';
 import './Cart.scss';
-import { DeleteOutlined } from '@ant-design/icons';
+import { CheckOutlined, DeleteOutlined } from '@ant-design/icons';
 
 const Cart = () => {
   const { cart, clearCart, clearItem } = useContext(ProductsContext);
@@ -12,7 +12,7 @@ const Cart = () => {
   if (cart.length <= 0) {
     return (
       <div className="cart_products">
-        <h1>Your cart is empty</h1>
+        <h3>Your cart is empty</h3>
       </div>
     );
   }
@@ -45,7 +45,7 @@ const Cart = () => {
             title="Sure to delete?"
             onConfirm={() => clearItem(index)}
           >
-            <Button type="primary" danger>
+            <Button type="primary" className="delete_button">
               <DeleteOutlined />
               Delete
             </Button>
@@ -60,16 +60,11 @@ const Cart = () => {
   return (
     <div className="cart_products">
       <Table
+        className="table_cart"
         columns={columns}
         bordered
         dataSource={products}
         rowKey="key"
-        style={{
-          border: '1px solid #f49cbb',
-          boxShadow: '5px 10px #cbeef3',
-          borderBlockEnd: '1px solid black',
-          borderRadius: '6px',
-        }}
       />
 
       <div className="buttons">
@@ -79,8 +74,8 @@ const Cart = () => {
             clearCart();
           }}
           type="primary"
-          style={{ backgroundColor: '#FF0080' }}
         >
+          <DeleteOutlined />
           Clear cart
         </Button>
 
@@ -90,9 +85,9 @@ const Cart = () => {
             createNewOrder(cart, token);
           }}
           type="primary"
-          style={{ backgroundColor: '#40E0D0' }}
         >
           Create order
+          <CheckOutlined className="check_svg" />
         </Button>
       </div>
     </div>

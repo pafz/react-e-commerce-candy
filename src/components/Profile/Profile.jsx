@@ -3,6 +3,8 @@ import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
 import { Table, Divider, List, Typography, Spin, Space } from 'antd';
 //TODO: change Uppercase Products.map line 36
+//TODO: spin color https://codesandbox.io/s/epic-jones-rrqh2?file=/index.js:39-41
+//FIXME: tbl expands without items
 
 const columns = [
   { title: 'id', dataIndex: 'id', key: 'id' },
@@ -26,7 +28,7 @@ const Profile = () => {
     return (
       <span>
         <Space className="spin">
-          <Spin size="large" tip="Loading" />
+          <Spin size="large" className="ant-spin-text" />
         </Space>
       </span>
     );
@@ -49,16 +51,12 @@ const Profile = () => {
     <>
       <div className="div_list_user_profile">
         <List
+          className="list_profile"
           size="small"
           header={<div className="header-footer">{user.name}'s profile</div>}
           footer={<div className="header-footer">{user.name}'s profile</div>}
           bordered
           grid={{ gutter: 12, column: 2 }}
-          style={{
-            border: '1px solid #f49cbb',
-            boxShadow: '5px 10px #cbeef3',
-            borderBlockEnd: '1px solid black',
-          }}
           dataSource={dataUser}
           renderItem={item => <List.Item>{item}</List.Item>}
         />
@@ -66,6 +64,7 @@ const Profile = () => {
 
       <div className="div_table_user_profile_products">
         <Table
+          className="table_profile"
           columns={columns}
           dataSource={ordersProducts}
           rowKey="id"
@@ -73,7 +72,9 @@ const Profile = () => {
             expandedRowRender: order => (
               <ul>
                 {order.Products.map(product => (
-                  <li key={product.id}>{product.name}</li>
+                  <li className="li_profile" key={product.id}>
+                    {product.name}
+                  </li>
                 ))}
               </ul>
             ),

@@ -1,19 +1,17 @@
 @import './../../colors.scss';
+@import './../../App.scss';
 
 .div_list_user_profile{
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    border: '1px solid';
-    border-color: 'red';
     padding: 3% 23%;
 }
 
 .header-footer {
     color: $pink;
     text-shadow: 1px 1px $cloud;
-
-    border-block-end: 1px black;
+    border-block-end: 1px $dark_gray;
 
 }
 
@@ -26,6 +24,59 @@
     padding: 5% 13%;
 }
 
+.list_profile {
+    @extend %borders;
+}
+
 .spin {
     padding-top: 160px;
+    color: $lime !important;
 }
+
+.ant-spin-text { color: #020aff !important; }
+
+.ant-spin-dot-item {
+    background-color: blueviolet
+  }
+
+.ant-table-tbody {
+    background-color: $lime;
+    color: $dark_gray;
+}
+
+.ant-table-thead {
+    tr {
+        th {
+            color: $violet !important;
+        }
+    }
+}
+
+.ant-pagination-item {
+    @extend %borders;
+}
+
+.ant-pagination-item a {
+    color: $blue_link !important;;
+}
+
+
+
+// .ant-pagination-item-active a {
+//     color: $orange !important;
+//     border: 5px solid !important;
+//     border-color: $orange !important;
+//     border-radius: 2px !important; 
+// }
+
+.ant-pagination-item-link {
+    color: $dark_gray !important;
+}
+
+.li_profile {
+    @extend %list;
+}
+
+
+
+//:where(.css-dev-only-do-not-override-txh9fw).ant-table-wrapper .ant-table-thead >tr>th, :where(.css-dev-only-do-not-override-txh9fw).ant-table-wrapper .ant-table-thead >tr>td

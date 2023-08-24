@@ -84,15 +84,18 @@ const Products = () => {
         {products.map(product => {
           return (
             <Card
+              className="card"
               key={product.id}
               hoverable
-              style={{
-                width: 240,
-                border: '1px solid #f49cbb',
-                boxShadow: '5px 10px #cbeef3',
-                borderBlockEnd: '1px solid black',
-                margin: '1%',
-              }}
+              // style={
+              //   {
+              //     // width: 240,
+              //     // border: '1px solid #f49cbb',
+              //     // boxShadow: '5px 10px #cbeef3',
+              //     // borderBlockEnd: '1px solid black',
+              //     // margin: '1%',
+              //   }
+              // }
               title={product.favorite}
               cover={
                 <img
