@@ -1,0 +1,17 @@
+@import './../../colors.scss';
+@import './../../App.scss';
+
+.container {
+    color: blue !important;
+}
+
+.ant-divider-inner-text{
+    color: $pink;
+    font-style: italic bold !important;
+    font-size: 110%;
+}
+
+.ant-col{
+    color: $violet;
+    font-size: 130%;
+}

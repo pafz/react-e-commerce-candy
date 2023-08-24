@@ -37,11 +37,11 @@ const formItemLayout = {
 const tailFormItemLayout = {
   wrapperCol: {
     xs: {
-      span: 24,
+      span: 12,
       offset: 0,
     },
     sm: {
-      span: 16,
+      span: 10,
       offset: 8,
     },
   },
@@ -194,8 +194,8 @@ const Register = () => {
             </Col>
           </Row>
         </Form.Item> */}
-        <div className="button">
-          {/* <Form.Item
+
+        {/* <Form.Item
             name="agreement"
             valuePropName="checked"
             rules={[
@@ -212,12 +212,11 @@ const Register = () => {
               I have read the <a href="">agreement</a>
             </Checkbox>
           </Form.Item> */}
-          <Form.Item {...tailFormItemLayout}>
-            <Button className="btn" type="primary" htmlType="submit">
-              Register
-            </Button>
-          </Form.Item>
-        </div>
+        <Form.Item {...tailFormItemLayout}>
+          <Button className="create_button" type="primary" htmlType="submit">
+            Register
+          </Button>
+        </Form.Item>
       </Form>
     </div>
   );

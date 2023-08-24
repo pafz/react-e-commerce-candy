@@ -2,6 +2,12 @@
 @import './../../App.scss';
 // @extend './../../App.scss;'
 
+.products_search{
+    margin: 0 20%;
+    align-items: 'center';
+    padding: 1%,
+}
+
 .products-container{
     display: flex;
     flex-wrap: wrap;
@@ -18,9 +24,9 @@
 
 .product_name {
     color: $pink;
+    font-size: 140%;
 }
 
-//TODO: change properties inside className, not in the jsx
 .site-button-ghost-wrapper{
     color: aquamarine;
 }
@@ -32,8 +38,10 @@
 .search_price_text {
     padding: 5% 3%;
     width: 240;
-    color: 'red';
-    background: '#d4adcf';
+}
+
+.search_text{
+    @extend %text;
 }
 
 .search_text:hover {
@@ -43,8 +51,12 @@
     box-shadow: 0 0 4px $aqua;
 }
 
-.p {
-    color: #0f1111;
+.ant-slider-track.ant-slider-track-1{
+    background-color: $violet
+}
+
+.ant-slider-track {
+    background-color: $blue_link !important;
 }
 
 .card {
@@ -52,3 +64,13 @@
     width: 240px;
     @extend %borders;
 }
+
+.ant-slider-handle::after {
+    background-color: $blue_link !important;
+    box-shadow: 0 0 0 2px $violet !important;
+}
+
+.ant-card-head-title{
+    color: $orange;
+}
+

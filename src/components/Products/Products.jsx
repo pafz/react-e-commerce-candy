@@ -6,6 +6,7 @@ import './../../colors.scss';
 import './Products.scss';
 import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
 //TODO: usar button como component
+//TODO: Product context
 
 const { Search } = Input;
 
@@ -32,15 +33,7 @@ const Products = () => {
 
   return (
     <>
-      <div
-        className="products_search"
-        style={{
-          margin: 'auto',
-          width: '50%',
-          alignItems: 'center',
-          padding: '1%',
-        }}
-      >
+      <div className="products_search">
         <Space direction="vertical">
           <Search
             className="search_text"
@@ -50,18 +43,17 @@ const Products = () => {
             }}
           />
         </Space>
-        //TODO: Product context
         <div className="search_price_text">
           <p className="search_price">
             search ₿
             <CaretUpOutlined
-              className="ant_icon"
+              className="anticon"
               onClick={() => {
                 console.log('up');
               }}
             />
             <CaretDownOutlined
-              className="ant_icon"
+              className="anticon"
               onClick={() => {
                 console.log('up');
               }}
@@ -87,15 +79,6 @@ const Products = () => {
               className="card"
               key={product.id}
               hoverable
-              // style={
-              //   {
-              //     // width: 240,
-              //     // border: '1px solid #f49cbb',
-              //     // boxShadow: '5px 10px #cbeef3',
-              //     // borderBlockEnd: '1px solid black',
-              //     // margin: '1%',
-              //   }
-              // }
               title={product.favorite}
               cover={
                 <img
@@ -105,18 +88,11 @@ const Products = () => {
               }
             >
               <nav className="product_name">
-                <Link
-                  to={'/product/' + product.id}
-                  style={{
-                    fontSize: '150%',
-                  }}
-                >
-                  {product.name}
-                </Link>
+                <Link to={'/product/' + product.id}>{product.name}</Link>
               </nav>
 
               <Space className="site-button-ghost-wrapper" wrap>
-                <Button ghost onClick={() => addCart(product)} style={{}}>
+                <Button ghost onClick={() => addCart(product)}>
                   Add Cart
                 </Button>
               </Space>

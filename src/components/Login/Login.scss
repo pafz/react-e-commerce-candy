@@ -1,4 +1,8 @@
 @import './../../colors.scss';
+@import './../../App.scss';
 
 .container{ padding: 3% 23%; } 
+.welcome{color: $pink; 
+        text-shadow: 5px 5px $cloud;}
 .form { align-items: center; }
+.create_button { @extend %create_btn}

@@ -1,4 +1,5 @@
 @import './../../colors.scss';
+@import './../../App.scss';
 
 .register_container{
     padding: 3% 23%;
@@ -12,12 +13,9 @@
     display:block;
 }
 
-.button {
-    padding: 3% 23%;
+.create_button {
+    @extend %create_btn;
 }
 
-.btn {
-    padding: 3% 34%;
-    background-color: $blue_link;
-
-}
+.anticon.ant-input-password-icon {
+    color: $blue_link !important;}
