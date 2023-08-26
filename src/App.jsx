@@ -11,6 +11,7 @@ import Product from './components/Product/Product';
 import Cart from './components/Cart/Cart';
 import { OrdersProvider } from './context/OrdersContext/OrdersState';
 import Register from './components/Register/Register';
+import CreateProduct from './components/CreateProduct/CreateProduct';
 
 function App() {
   return (
@@ -27,6 +28,7 @@ function App() {
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/register" element={<Register />} />
                 <Route path="/product/:id" element={<Product />} />
+                <Route path="/createproduct" element={<CreateProduct />} />
               </Routes>
               <Footer />
             </OrdersProvider>

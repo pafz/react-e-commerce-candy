@@ -4,16 +4,8 @@ import { UserContext } from '../../context/UserContext/UserState';
 import { useNavigate } from 'react-router-dom';
 import './Register.scss';
 
-import {
-  Button,
-  Checkbox,
-  Col,
-  Form,
-  Input,
-  DatePicker,
-  Row,
-  Select,
-} from 'antd';
+import { Button, Form, Input, DatePicker, Select } from 'antd';
+import { MailOutlined, UserOutlined } from '@ant-design/icons';
 const { Option } = Select;
 
 const formItemLayout = {
@@ -87,7 +79,7 @@ const Register = () => {
             },
           ]}
         >
-          <Input />
+          <Input suffix={<UserOutlined className="site-form-item-icon" />} />
         </Form.Item>
         <Form.Item
           className="form"
@@ -115,7 +107,7 @@ const Register = () => {
             },
           ]}
         >
-          <Input />
+          <Input suffix={<MailOutlined />} />
         </Form.Item>
         <Form.Item
           name="password"
@@ -164,7 +156,7 @@ const Register = () => {
             },
           ]}
         >
-          <Select placeholder="select your gender">
+          <Select className="gender" placeholder="Select your gender">
             <Option value="F">F</Option>
             <Option value="M">M</Option>
             <Option value="none">None</Option>

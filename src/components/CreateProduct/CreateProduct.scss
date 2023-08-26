@@ -1,0 +1,38 @@
+@import './../../colors.scss';
+@import './../../App.scss';
+
+.create_container{
+    padding: 3% 23%;
+}
+
+.container{ padding: 3% 3%; align-items: center;} 
+
+.form{max-width: 600;}
+
+.heart_icon{
+    color: $pink;
+}
+
+.bitcoin_icon{
+    color: $orange;
+}
+
+.input_price {
+    display: inline-flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    align-items: unset;
+    align-content: flex-start;
+    background-color: blue;
+}
+
+.form_price {
+    background-color: palevioletred;
+}
+
+.ant-btn{
+    font-size: 110%;
+    padding: 0 10%;
+    border-radius: 6px;
+}

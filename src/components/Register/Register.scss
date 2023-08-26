@@ -13,9 +13,14 @@
     display:block;
 }
 
+.gender {
+    text-align: left
+}
+
 .create_button {
     @extend %create_btn;
 }
 
 .anticon.ant-input-password-icon {
     color: $blue_link !important;}
+
