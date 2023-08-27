@@ -10,6 +10,11 @@ const ProductsReducer = (state, action) => {
         ...state,
         product: action.payload,
       };
+    case 'CREATE_PRODUCT':
+      return {
+        ...state,
+        product: action.payload,
+      };
     case 'ADD_CART':
       return {
         ...state,

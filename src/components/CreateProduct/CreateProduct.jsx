@@ -1,8 +1,9 @@
-import React from 'react';
+import React, { useContext } from 'react';
 import './CreateProduct.scss';
 import { Button, Form, Input, InputNumber, Select } from 'antd';
 import Icon from '@ant-design/icons/lib/components/Icon';
 import { SettingOutlined } from '@ant-design/icons';
+import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 
 const HeartSvg = () => (
   <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1024 1024">
@@ -22,6 +23,7 @@ const BitcoinSvg = () => {
 const BitcoinIcon = props => <Icon component={BitcoinSvg} {...props} />;
 
 const { Option } = Select;
+
 const formItemLayout = {
   labelCol: {
     xs: {
@@ -69,9 +71,11 @@ const selectBefore = (
 <Option value="BTC">₿</Option>;
 
 const CreateProduct = () => {
+  const { createProduct } = useContext(ProductsContext);
   const [form] = Form.useForm();
+
   const onFinish = values => {
-    console.log('Received values of form: ', values);
+    createProduct(values);
   };
 
   return (
@@ -152,73 +156,10 @@ const CreateProduct = () => {
           </div>
         </Form.Item>
 
-        <Form.Item
-          name="category"
-          label="Category"
-          validateStatus="category"
-          rules={[
-            {
-              required: true,
-              message: 'Please input a category',
-            },
-          ]}
-        >
-          <Select placeholder="Category Id" allowClear>
-            <Option value="1">honey</Option>
-            <Option value="2">Option 2</Option>
-            <Option value="3">Option 3</Option>
-          </Select>
-        </Form.Item>
-
-        <Form.Item
-          name="company"
-          label="Company"
-          validateStatus="company"
-          rules={[
-            {
-              required: true,
-              message: 'Please input the company',
-            },
-          ]}
-        >
-          <Select placeholder="Company Id" allowClear>
-            <Option value="1">Mars Inc</Option>
-            <Option value="2">Option 2</Option>
-            <Option value="3">Option 3</Option>
-          </Select>
-        </Form.Item>
-
-        {/* <Form.Item
-        label="Warning"
-        hasFeedback
-        validateStatus="warning"
-        help="Need to be checked"
-      >
-        <TreeSelect
-          placeholder="I'm TreeSelect"
-          treeData={[
-            {
-              value: 'xx',
-              label: 'xx',
-            },
-          ]}
-          allowClear
-        />
-      </Form.Item> */}
-
         <Button className="create_button" type="primary" htmlType="submit">
           Create product
         </Button>
       </Form>
-      {/* <Space direction="vertical">
-        <InputNumber addonBefore="+" addonAfter="$" defaultValue={100} />
-        <InputNumber
-          addonBefore={selectBefore}
-          addonAfter={selectAfter}
-          defaultValue={100}
-        />
-        <InputNumber addonAfter={<SettingOutlined />} defaultValue={100} />
-      </Space> */}
     </div>
   );
 };

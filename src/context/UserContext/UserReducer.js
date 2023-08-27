@@ -21,6 +21,7 @@ const users = (state, action) => {
       return {
         ...state,
         token: action.payload.token,
+        user: action.payload.user,
       };
     case 'GET_USER_ORDERS_PRODUCTS':
       return {

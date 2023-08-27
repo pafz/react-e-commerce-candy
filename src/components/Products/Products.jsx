@@ -4,7 +4,12 @@ import { Link } from 'react-router-dom';
 import { Space, Input, Slider, Card, Button } from 'antd';
 import './../../colors.scss';
 import './Products.scss';
-import { CaretDownOutlined, CaretUpOutlined } from '@ant-design/icons';
+import {
+  CaretDownOutlined,
+  CaretUpOutlined,
+  DeleteOutlined,
+  RedoOutlined,
+} from '@ant-design/icons';
 //TODO: usar button como component
 //TODO: Product context
 
@@ -97,6 +102,20 @@ const Products = () => {
                 </Button>
               </Space>
               <p>{product.price.toFixed(2)} ₿</p>
+
+              <div className="buttons_delete_update">
+                <Space className="site-button-ghost-wrapper" wrap>
+                  <Button className="delete_button" type="primary">
+                    <DeleteOutlined />
+                  </Button>
+                </Space>
+
+                <Space className="site-button-ghost-wrapper" wrap>
+                  <Button className="update_button" type="primary">
+                    <RedoOutlined className="redo_svg" />
+                  </Button>
+                </Space>
+              </div>
             </Card>
           );
         })}

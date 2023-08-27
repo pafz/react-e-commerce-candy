@@ -8,6 +8,7 @@ import {
   LoginOutlined,
   LogoutOutlined,
   PicRightOutlined,
+  PlusCircleFilled,
   ShoppingCartOutlined,
 } from '@ant-design/icons';
 import { UserOutlined } from '@ant-design/icons';
@@ -15,7 +16,7 @@ import { Badge, Avatar, Space } from 'antd';
 //TODO: cart_badge change to backgroundColor
 
 const Header = () => {
-  const { token, logout } = useContext(UserContext);
+  const { token, logout, user } = useContext(UserContext);
   const { cart } = useContext(ProductsContext);
 
   const navigate = useNavigate();
@@ -72,7 +73,13 @@ const Header = () => {
                 | <HomeOutlined className="home_svg" />
               </Link>
             </span>
-
+            {user?.role === 'admin' && (
+              <span>
+                <Link to="/createproduct">
+                  | <PlusCircleFilled className="plus_svg" />
+                </Link>
+              </span>
+            )}
             <span onClick={logoutUser}>
               <Link to="/">
                 | <LogoutOutlined className="logout_svg" />

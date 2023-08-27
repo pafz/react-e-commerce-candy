@@ -1,6 +1,7 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useContext, useReducer } from 'react';
 import ProductsReducer from './ProductsReducer';
 import axios from 'axios';
+import { UserContext } from '../UserContext/UserState';
 
 const cart = JSON.parse(localStorage.getItem('cart'));
 
@@ -13,6 +14,7 @@ const initialState = {
 
 export const ProductsProvider = ({ children }) => {
   const [state, dispatch] = useReducer(ProductsReducer, initialState);
+  const { token } = useContext(UserContext);
 
   const getProducts = async filters => {
     let query = '?';
@@ -61,6 +63,12 @@ export const ProductsProvider = ({ children }) => {
   //   });
   // };
 
+  const createProduct = async product => {
+    const res = await axios.post(API_URL + '/products', product, {
+      headers: { Authorization: token },
+    });
+  };
+
   const addCart = product => {
     dispatch({
       type: 'ADD_CART',
@@ -100,6 +108,7 @@ export const ProductsProvider = ({ children }) => {
         getById,
         // getAllByName,
         // getProductsBetweenPrice,
+        createProduct,
         addCart,
         clearCart,
         clearItem,

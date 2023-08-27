@@ -1,5 +1,5 @@
 import React from 'react';
-import { useContext, useEffect } from 'react'; // ant.design   is necesary to use useContext???
+import { useContext, useState } from 'react'; // ant.design   is necesary to use useContext???
 import { UserContext } from '../../context/UserContext/UserState';
 import { useNavigate } from 'react-router-dom';
 import './Register.scss';
@@ -41,22 +41,21 @@ const tailFormItemLayout = {
 
 const Register = () => {
   const { create } = useContext(UserContext);
-  const navigate = useNavigate();
+  const [registered, setRegistered] = useState(false);
 
   const [form] = Form.useForm();
-
   const onFinish = values => {
     create(values);
+    setRegistered(true);
   };
 
-  //FIXME: avoid a kid sign up. In that case, sign up as a user kid by dafult. Avoid an really old date.
-  const ofLegalAge = ({ user }) => {
-    let year = getFullYear();
-    console.log(user.date);
-  };
-  //FIXME: name validation etc
-  //FIXME: captcha working, a link down
-  //FIXME: aggrement modal or similar
+  if (registered) {
+    return (
+      <div className="register_container">
+        <h3>Registration success, please check your email.</h3>
+      </div>
+    );
+  }
 
   return (
     <div className="register_container">
@@ -162,48 +161,6 @@ const Register = () => {
             <Option value="none">None</Option>
           </Select>
         </Form.Item>
-        {/* <Form.Item
-          label="Captcha"
-          extra="We must make sure that your are a human."
-        >
-          <Row gutter={8}>
-            <Col span={12}>
-              <Form.Item
-                name="captcha"
-                noStyle
-                rules={[
-                  {
-                    required: true,
-                    message: 'Please input the captcha you got!',
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
-            </Col>
-            <Col span={12}>
-              <Button>Get captcha</Button>
-            </Col>
-          </Row>
-        </Form.Item> */}
-
-        {/* <Form.Item
-            name="agreement"
-            valuePropName="checked"
-            rules={[
-              {
-                validator: (_, value) =>
-                  value
-                    ? Promise.resolve()
-                    : Promise.reject(new Error('Should accept agreement')),
-              },
-            ]}
-            {...tailFormItemLayout}
-          >
-            <Checkbox>
-              I have read the <a href="">agreement</a>
-            </Checkbox>
-          </Form.Item> */}
         <Form.Item {...tailFormItemLayout}>
           <Button className="create_button" type="primary" htmlType="submit">
             Register
