@@ -69,6 +69,18 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
+  const updateProduct = async product => {
+    const res = await axios.put(API_URL + '/products/' + product.id, product, {
+      headers: { Authorization: token },
+    });
+  };
+
+  const deleteProduct = async product => {
+    const res = await axios.delete(API_URL + '/products/' + product.id, {
+      headers: { Authorization: token },
+    });
+  };
+
   const addCart = product => {
     dispatch({
       type: 'ADD_CART',
@@ -108,7 +120,9 @@ export const ProductsProvider = ({ children }) => {
         getById,
         // getAllByName,
         // getProductsBetweenPrice,
+        deleteProduct,
         createProduct,
+        updateProduct,
         addCart,
         clearCart,
         clearItem,

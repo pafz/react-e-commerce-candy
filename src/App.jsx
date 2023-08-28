@@ -12,6 +12,7 @@ import Cart from './components/Cart/Cart';
 import { OrdersProvider } from './context/OrdersContext/OrdersState';
 import Register from './components/Register/Register';
 import CreateProduct from './components/CreateProduct/CreateProduct';
+import EditProduct from './components/EditProduct/EditProduct';
 
 function App() {
   return (
@@ -29,6 +30,7 @@ function App() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/product/:id" element={<Product />} />
                 <Route path="/createproduct" element={<CreateProduct />} />
+                <Route path="/editproduct/:id" element={<EditProduct />} />
               </Routes>
               <Footer />
             </OrdersProvider>

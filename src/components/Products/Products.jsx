@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 import { Link } from 'react-router-dom';
-import { Space, Input, Slider, Card, Button } from 'antd';
+import { Space, Input, Slider, Card, Button, Popconfirm } from 'antd';
 import './../../colors.scss';
 import './Products.scss';
 import {
@@ -10,6 +10,7 @@ import {
   DeleteOutlined,
   RedoOutlined,
 } from '@ant-design/icons';
+import CreateProduct from '../CreateProduct/CreateProduct';
 //TODO: usar button como component
 //TODO: Product context
 
@@ -17,8 +18,15 @@ const { Search } = Input;
 
 const Products = () => {
   //TODO: button to findAll again after search???
-  const { getProducts, products, addCart, filters, setFilters } =
-    useContext(ProductsContext);
+  const {
+    getProducts,
+    products,
+    addCart,
+    filters,
+    setFilters,
+    updateProduct,
+    deleteProduct,
+  } = useContext(ProductsContext);
 
   useEffect(() => {
     getProducts(filters);
@@ -104,16 +112,20 @@ const Products = () => {
               <p>{product.price.toFixed(2)} ₿</p>
 
               <div className="buttons_delete_update">
+                <Popconfirm
+                  title="Sure to delete?"
+                  onConfirm={() => deleteProduct(product)}
+                >
+                  <Space className="site-button-ghost-wrapper" wrap>
+                    <Button className="delete_button" type="primary">
+                      <DeleteOutlined />
+                    </Button>
+                  </Space>
+                </Popconfirm>
                 <Space className="site-button-ghost-wrapper" wrap>
-                  <Button className="delete_button" type="primary">
-                    <DeleteOutlined />
-                  </Button>
-                </Space>
-
-                <Space className="site-button-ghost-wrapper" wrap>
-                  <Button className="update_button" type="primary">
+                  <Link to={'/editproduct/' + product.id}>
                     <RedoOutlined className="redo_svg" />
-                  </Button>
+                  </Link>
                 </Space>
               </div>
             </Card>
