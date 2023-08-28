@@ -85,8 +85,8 @@
     @extend %create_btn;
 }
 
-.delete_button{
-    @extend %clear_btn;
+.delete_svg{
+    color: $garnet !important;
 }
 
 .redo_svg{
