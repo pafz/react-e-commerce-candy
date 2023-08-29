@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import './EditProduct.scss';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 import { Button, Form, Input, InputNumber, Space, Spin } from 'antd';
@@ -34,6 +34,7 @@ const formItemLayout = {
 
 const EditProduct = () => {
   const { updateProduct, getById, product } = useContext(ProductsContext);
+  const [updated, setUpdated] = useState(false);
   const { id } = useParams();
 
   useEffect(() => {
@@ -44,23 +45,26 @@ const EditProduct = () => {
 
   const onFinish = values => {
     updateProduct({ ...product, ...values });
+    setUpdated(true);
   };
 
-  useEffect(() => {
-    if (product) {
-      form.setFieldsValue(product);
-    }
-  }, [product]);
-
-  if (!product) {
+  if (updated) {
     return (
-      <span>
-        <Space className="spin">
-          <Spin size="large" />
-        </Space>
-      </span>
+      <div className="edit_container">
+        <h3>Registration success, please check your email.</h3>
+      </div>
     );
   }
+
+  // if (!product) {
+  //   return (
+  //     <span>
+  //       <Space className="spin">
+  //         <Spin size="large" />
+  //       </Space>
+  //     </span>
+  //   );
+  // }
 
   return (
     <Form
