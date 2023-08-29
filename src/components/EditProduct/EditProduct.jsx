@@ -1,7 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import './EditProduct.scss';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
-import { Button, Form, Input, InputNumber } from 'antd';
+import { Button, Form, Input, InputNumber, Space, Spin } from 'antd';
 import Icon from '@ant-design/icons/lib/components/Icon';
 import { useParams } from 'react-router-dom';
 
@@ -47,18 +47,29 @@ const EditProduct = () => {
   };
 
   useEffect(() => {
-    form.setFieldsValue(product);
+    if (product) {
+      form.setFieldsValue(product);
+    }
   }, [product]);
+
+  if (!product) {
+    return (
+      <span>
+        <Space className="spin">
+          <Spin size="large" />
+        </Space>
+      </span>
+    );
+  }
 
   return (
     <Form
       className="form"
       {...formItemLayout}
       form={form}
-      name="create"
+      name="editproduct"
       onFinish={onFinish}
       //TODO: onFinishFailed={onFinishFailed}
-      autoComplete="off"
       scrollToFirstError
     >
       <Form.Item

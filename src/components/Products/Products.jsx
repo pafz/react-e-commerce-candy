@@ -117,9 +117,7 @@ const Products = () => {
                   onConfirm={() => deleteProduct(product)}
                 >
                   <Space className="site-button-ghost-wrapper" wrap>
-                    {/* <Button className="delete_button" type="primary"> */}
                     <DeleteOutlined className="delete_svg" />
-                    {/* </Button> */}
                   </Space>
                 </Popconfirm>
                 <Space className="site-button-ghost-wrapper" wrap>

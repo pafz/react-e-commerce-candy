@@ -2,6 +2,8 @@ import './Profile.scss';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
 import { Table, Divider, List, Typography, Spin, Space } from 'antd';
+import { EditOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 //TODO: change Uppercase Products.map line 36
 //TODO: spin color https://codesandbox.io/s/epic-jones-rrqh2?file=/index.js:39-41
 //FIXME: tbl expands without items
@@ -45,6 +47,9 @@ const Profile = () => {
     user.role,
     'updatedAt:',
     user.updatedAt,
+    <Link to={'/editprofile/' + user.id}>
+      <EditOutlined />
+    </Link>,
   ];
 
   return (

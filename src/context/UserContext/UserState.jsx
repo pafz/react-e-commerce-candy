@@ -63,6 +63,16 @@ export const UserProvider = ({ children }) => {
     return res;
   };
 
+  const updateProfile = async user => {
+    const res = await axios.put(
+      API_URL + '/users/updateUser/' + user.id,
+      user,
+      {
+        headers: { authorization: token },
+      }
+    );
+  };
+
   const logout = async () => {
     const token = JSON.parse(localStorage.getItem('token'));
     const res = await axios.delete(API_URL + '/users/logout', {
@@ -88,6 +98,7 @@ export const UserProvider = ({ children }) => {
         create,
         login,
         getUserInfo,
+        updateProfile,
         logout,
         getOrdersAndProducts,
       }}

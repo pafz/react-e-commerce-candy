@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './components/Login/Login';
 import Header from './components/Header/Header';
 import Profile from './components/Profile/Profile';
+import EditProfile from './components/EditProfile/EditProfile';
 import { UserProvider } from './context/UserContext/UserState';
 import Footer from './components/Footer/Footer';
 import { ProductsProvider } from './context/ProductsContext/ProductsState';
@@ -25,6 +26,7 @@ function App() {
               <Routes>
                 <Route path="/login" element={<Login />} />
                 <Route path="/profile" element={<Profile />} />
+                <Route path="/editprofile/:id" element={<EditProfile />} />
                 <Route path="/" element={<Products />} />
                 <Route path="/cart" element={<Cart />} />
                 <Route path="/register" element={<Register />} />
