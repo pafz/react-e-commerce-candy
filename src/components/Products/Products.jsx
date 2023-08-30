@@ -4,12 +4,7 @@ import { Link } from 'react-router-dom';
 import { Space, Input, Slider, Card, Button, Popconfirm } from 'antd';
 import './../../colors.scss';
 import './Products.scss';
-import {
-  CaretDownOutlined,
-  CaretUpOutlined,
-  DeleteOutlined,
-  RedoOutlined,
-} from '@ant-design/icons';
+import { DeleteOutlined, RedoOutlined } from '@ant-design/icons';
 import CreateProduct from '../CreateProduct/CreateProduct';
 //TODO: usar button como component
 //TODO: Product context
@@ -57,22 +52,6 @@ const Products = () => {
           />
         </Space>
         <div className="search_price_text">
-          <p className="search_price">
-            search ₿
-            <CaretUpOutlined
-              className="anticon"
-              onClick={() => {
-                console.log('up');
-              }}
-            />
-            <CaretDownOutlined
-              className="anticon"
-              onClick={() => {
-                console.log('up');
-              }}
-            />
-          </p>
-
           <Slider
             range={{
               draggableTrack: true,

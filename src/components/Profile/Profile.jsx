@@ -47,8 +47,8 @@ const Profile = () => {
     user.role,
     'updatedAt:',
     user.updatedAt,
-    <Link to={'/editprofile/' + user.id}>
-      <EditOutlined />
+    <Link to={'/editprofile/'}>
+      Edit <EditOutlined />
     </Link>,
   ];
 
@@ -76,9 +76,9 @@ const Profile = () => {
           expandable={{
             expandedRowRender: order => (
               <ul>
-                {order.Products.map(product => (
-                  <li className="li_profile" key={product.id}>
-                    {product.name}
+                {order.OrderProducts.map(orderProduct => (
+                  <li className="li_profile" key={orderProduct.id}>
+                    {orderProduct.Product.name}
                   </li>
                 ))}
               </ul>
@@ -92,6 +92,3 @@ const Profile = () => {
 };
 
 export default Profile;
-//https://ant.design/components/form
-//https://ant.design/components/table#components-table-demo-ellipsis-custom-tooltip
-//https://ant.design/components/spin

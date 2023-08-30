@@ -68,7 +68,7 @@ Ejercicio realizado durante la onceava semana del bootcamp para poner en prácti
     <li>Uso de <a href="https://ant.design/components/overview" target="_blank">Ant Design</a> para estilos predefinido</li>
         <hr style="height:2px;border-width:0;color:gray;background-color:gray">
         <strong>✺ Opcionales:</strong>
-    <li>Buscador de productos por:<ul><li>texto</li><li>precio</li><li>desc/ asc</li></ul></li>
+    <li>Buscador de productos por:<ul><li>texto</li><li>precio</li></ul></li>
     <li>CRUD Products</li>
     <li>Resposive</li>
     <hr style="height:2px;border-width:0;color:gray;background-color:gray">
@@ -186,6 +186,7 @@ En el <i>index.js</i>:<br>
 - [ ] Implementación de guards.
 - [ ] More validations.
 - [ ] Delete User.
+- [ ] Buscador de precios descendente/ ascendente.
 <p align="right">(<a href="README.md#top">volver al principio </a>)</p>
 </views>
 

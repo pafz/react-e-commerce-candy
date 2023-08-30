@@ -8,7 +8,7 @@ import {
   LoginOutlined,
   LogoutOutlined,
   PicRightOutlined,
-  PlusCircleFilled,
+  PlusCircleOutlined,
   ShoppingCartOutlined,
 } from '@ant-design/icons';
 import { UserOutlined } from '@ant-design/icons';
@@ -16,7 +16,7 @@ import { Badge, Avatar, Space } from 'antd';
 //TODO: cart_badge change to backgroundColor
 
 const Header = () => {
-  const { token, logout, user } = useContext(UserContext);
+  const { token, logout, user, getUserInfo } = useContext(UserContext);
   const { cart } = useContext(ProductsContext);
 
   const navigate = useNavigate();
@@ -27,6 +27,10 @@ const Header = () => {
       navigate('/');
     }, 2000);
   };
+
+  useEffect(() => {
+    getUserInfo();
+  }, []);
 
   useEffect(() => {
     localStorage.setItem('cart', JSON.stringify(cart));
@@ -42,27 +46,16 @@ const Header = () => {
 
       <div>
         {token ? (
-          <div className="loggedInMenu">
+          <div className="loggedInMenu menu">
             <span>
               <Link to="/profile">
-                <Space direction="vertical" size="small">
-                  <Space wrap size={10}>
-                    <Avatar
-                      shape="circle"
-                      size="middle"
-                      icon={<UserOutlined className="user_icon" />}
-                      alt="Your profile"
-                      srcSet=""
-                    />
-                    |
-                  </Space>
-                </Space>
+                <UserOutlined className="user_icon" />
               </Link>
             </span>
 
             <span className="headerCart">
               <Link to="/cart">
-                <Badge className="cart_badge" count={cart.length} size="middle">
+                <Badge className="cart_badge" count={cart.length} size="small">
                   <ShoppingCartOutlined className="cart_svg" />
                 </Badge>
               </Link>
@@ -70,32 +63,32 @@ const Header = () => {
 
             <span>
               <Link to="/">
-                | <HomeOutlined className="home_svg" />
+                <HomeOutlined className="home_svg" />
               </Link>
             </span>
             {user?.role === 'admin' && (
               <span>
                 <Link to="/createproduct">
-                  | <PlusCircleFilled className="plus_svg" />
+                  <PlusCircleOutlined className="plus_svg" />
                 </Link>
               </span>
             )}
             <span onClick={logoutUser}>
               <Link to="/">
-                | <LogoutOutlined className="logout_svg" />
+                <LogoutOutlined className="logout_svg" />
               </Link>
             </span>
           </div>
         ) : (
-          <div className="unloggedMenu">
+          <div className="unloggedMenu menu">
             <span>
               <Link to="/">
-                <HomeOutlined className="home_svg" /> |
+                <HomeOutlined className="home_svg" />
               </Link>
             </span>
             <span>
               <Link to="/register">
-                <PicRightOutlined className="register_svg" /> |
+                <PicRightOutlined className="register_svg" />
               </Link>
             </span>
             <span>

@@ -38,10 +38,9 @@ const tailFormItemLayout = {
 
 const EditProfile = () => {
   const { user, getUserInfo, updateProfile } = useContext(UserContext);
-  const { id } = useParams();
 
   useEffect(() => {
-    getUserInfo(id);
+    getUserInfo();
   }, []);
 
   const onFinish = values => {
@@ -66,7 +65,6 @@ const EditProfile = () => {
     );
   }
 
-  console.log(user);
   return (
     <Form
       className="form"

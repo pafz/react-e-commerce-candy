@@ -39,7 +39,6 @@ const Cart = () => {
       title: 'delete',
       key: 'delete',
       render: (text, record, index) => {
-        console.log(index);
         return (
           <Popconfirm
             title="Sure to delete?"

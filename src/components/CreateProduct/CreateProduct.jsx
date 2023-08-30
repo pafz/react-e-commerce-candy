@@ -12,7 +12,7 @@ const HeartSvg = () => (
 );
 
 const HeartIcon = props => <Icon component={HeartSvg} {...props} />;
-////
+//
 
 const BitcoinSvg = () => {
   <svg width="1em" height="1em" fill="currentColor" viewBox="0 0 1024 1024">

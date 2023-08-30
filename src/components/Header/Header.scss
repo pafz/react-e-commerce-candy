@@ -60,24 +60,20 @@ $padding_menu: 0 1.5%;
   color: $orange;
 }
 
-.home_svg {
-  padding: $padding_menu;
+.menu {
+  padding: 15px;
 }
 
-.register_svg {
-  padding: $padding_menu;
+.menu > span > a {
+  padding:  1.5%;
+  border-radius: 5px;
+  border: 1px solid;
+  margin-right: 25px;
+  cursor: pointer;
+  &:hover {
+    box-shadow: 2px 3px 19px 1px rgba(124,198,202,0.8);
+  }
 }
 
-.login_svg {
-  padding: $padding_menu;
-}
-
-.logout_svg {
-  padding: $padding_menu;
-}
-
-.headerCart {
-  padding: $padding_menu ;
-}
 
 sup.ant-scroll-number.ant-badge-count{background-color: $pink !important;}

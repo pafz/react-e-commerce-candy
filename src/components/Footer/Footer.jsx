@@ -22,41 +22,35 @@ const Footer = () => {
   }, [cart]);
 
   return (
-    <nav className="footer_nav">
-      <div className="footer">
-        <p>⊶ ⊷ ⊸ ⊹ Footer ⊶ ⊷ ⊸ ⊹</p>
-      </div>
-
-      <div>
-        {token ? (
-          <div>
-            <span>
-              <Link to="/profile">Profile |</Link>
-            </span>
-            <span className="headerCart">
-              <Link to="/cart">Cart |</Link>
-            </span>
-            <span>
-              <Link to="/">Products | </Link>
-            </span>
-            <span onClick={logoutUser}>
-              <Link to="/">Logout | </Link>
-            </span>
-          </div>
-        ) : (
-          <div>
-            <span>
-              <Link to="/">| Products |</Link>
-            </span>
-            <span>
-              <Link to="/register"> Register | </Link>
-            </span>
-            <span>
-              <Link to="/login">Login | </Link>
-            </span>
-          </div>
-        )}
-      </div>
+    <nav className="menu footer_nav">
+      {token ? (
+        <>
+          <span>
+            <Link to="/profile">Profile</Link>
+          </span>
+          <span className="headerCart">
+            <Link to="/cart">Cart</Link>
+          </span>
+          <span>
+            <Link to="/">Products</Link>
+          </span>
+          <span onClick={logoutUser}>
+            <Link to="/">Logout</Link>
+          </span>
+        </>
+      ) : (
+        <>
+          <span>
+            <Link to="/">Products</Link>
+          </span>
+          <span>
+            <Link to="/register"> Register</Link>
+          </span>
+          <span>
+            <Link to="/login">Login</Link>
+          </span>
+        </>
+      )}
     </nav>
   );
 };
