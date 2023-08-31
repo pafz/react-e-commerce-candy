@@ -41,6 +41,12 @@ const EditProduct = () => {
     getById(id);
   }, []);
 
+  useEffect(() => {
+    if (product) {
+      form.setFieldsValue(product);
+    }
+  }, [product]);
+
   const [form] = Form.useForm();
 
   const onFinish = values => {
@@ -51,20 +57,10 @@ const EditProduct = () => {
   if (updated) {
     return (
       <div className="edit_container">
-        <h3>Registration success, please check your email.</h3>
+        <h3>Update success</h3>
       </div>
     );
   }
-
-  // if (!product) {
-  //   return (
-  //     <span>
-  //       <Space className="spin">
-  //         <Spin size="large" />
-  //       </Space>
-  //     </span>
-  //   );
-  // }
 
   return (
     <Form
@@ -73,7 +69,6 @@ const EditProduct = () => {
       form={form}
       name="editproduct"
       onFinish={onFinish}
-      //TODO: onFinishFailed={onFinishFailed}
       scrollToFirstError
     >
       <Form.Item
@@ -137,9 +132,7 @@ const EditProduct = () => {
           },
         ]}
       >
-        <div className="input_price">
-          <InputNumber defaultValue={0} />
-        </div>
+        <InputNumber />
       </Form.Item>
 
       <Button className="create_button" type="primary" htmlType="submit">

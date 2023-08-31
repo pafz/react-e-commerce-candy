@@ -1,7 +1,6 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
 import { Button, Input, DatePicker, Select, Form, Space, Spin } from 'antd';
-import { useParams } from 'react-router-dom';
 import { MailOutlined, UserOutlined } from '@ant-design/icons';
 import dayjs from 'dayjs';
 
@@ -38,16 +37,11 @@ const tailFormItemLayout = {
 
 const EditProfile = () => {
   const { user, getUserInfo, updateProfile } = useContext(UserContext);
+  const [updated, setUpdated] = useState(false);
 
   useEffect(() => {
     getUserInfo();
   }, []);
-
-  const onFinish = values => {
-    updateProfile({ ...user, ...values });
-  };
-
-  const [form] = Form.useForm();
 
   useEffect(() => {
     if (user) {
@@ -55,13 +49,18 @@ const EditProfile = () => {
     }
   }, [user]);
 
-  if (!user) {
+  const [form] = Form.useForm();
+
+  const onFinish = values => {
+    updateProfile({ ...user, ...values });
+    setUpdated(true);
+  };
+
+  if (updated) {
     return (
-      <span>
-        <Space className="spin">
-          <Spin size="large" />
-        </Space>
-      </span>
+      <div className="edit_container">
+        <h3>Update success</h3>
+      </div>
     );
   }
 

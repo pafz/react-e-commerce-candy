@@ -6,13 +6,10 @@ import './../../colors.scss';
 import './Products.scss';
 import { DeleteOutlined, RedoOutlined } from '@ant-design/icons';
 import { UserContext } from '../../context/UserContext/UserState';
-//TODO: usar button como component
-//TODO: Product context
 
 const { Search } = Input;
 
 const Products = () => {
-  //TODO: button to findAll again after search???
   const { getProducts, products, addCart, filters, setFilters, deleteProduct } =
     useContext(ProductsContext);
 
@@ -117,6 +114,3 @@ const Products = () => {
 };
 
 export default Products;
-//https://ant.design/components/card
-//https://ant.design/components/button
-//https://ant.design/components/icon

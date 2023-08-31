@@ -4,7 +4,6 @@ const users = (state, action) => {
       return {
         ...state,
         user: action.payload,
-        //FIXME: ???
       };
     case 'GET_USER_INFO':
       return {
@@ -26,7 +25,7 @@ const users = (state, action) => {
     case 'GET_USER_ORDERS_PRODUCTS':
       return {
         ...state,
-        ordersProducts: action.payload, /// ??????
+        ordersProducts: action.payload,
       };
     default:
       return state;

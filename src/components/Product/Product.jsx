@@ -46,4 +46,3 @@ const Product = () => {
 };
 
 export default Product;
-//https://ant.design/components/grid

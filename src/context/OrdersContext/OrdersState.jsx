@@ -8,9 +8,6 @@ export const OrdersProvider = ({ children }) => {
     try {
       await axios.post(
         API_URL + '/orders/createOrder',
-        // order es arr de Obj y le paso un arr de num -> looping
-        // [{id: 4, ...}, {id: 2, ...}]
-        // [4, 2]
         {
           productId: order.map(e => e.id),
           //TODO: Delivery is hardcoded, change it to dynamic value

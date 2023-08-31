@@ -1,7 +1,6 @@
 import React from 'react';
-import { useContext, useState } from 'react'; // ant.design   is necesary to use useContext???
+import { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
-import { useNavigate } from 'react-router-dom';
 import './Register.scss';
 
 import { Button, Form, Input, DatePicker, Select } from 'antd';
@@ -172,5 +171,3 @@ const Register = () => {
 };
 
 export default Register;
-//https://ant.design/components/form   Registration -> Fill in this form to create a new account for you. -> JS
-//https://stackoverflow.com/questions/40644615/how-to-use-google-recaptcha-in-the-ant-design-form-component TODO: use captcha https://developers.google.com/recaptcha/old/docs/customization

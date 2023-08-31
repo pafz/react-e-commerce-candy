@@ -42,27 +42,6 @@ export const ProductsProvider = ({ children }) => {
     });
   };
 
-  // const getAllByName = async searchTerm => {
-  //   const res = await axios.get(
-  //     API_URL + '/products/getAllByName/' + searchTerm
-  //   );
-  //   dispatch({
-  //     type: 'GET_PRODUCTS',
-  //     payload: res.data,
-  //   });
-  // };
-
-  //TODO: hardcoded
-  // const getProductsBetweenPrice = async ({ low, high }) => {
-  //   const res = await axios.get(
-  //     API_URL + '/products/getProductsBetweenPrice/' + { low: 0, high: 1 }
-  //   );
-  //   dispatch({
-  //     type: 'GET_PRODUCTS',
-  //     payload: res.data,
-  //   });
-  // };
-
   const createProduct = async product => {
     const res = await axios.post(API_URL + '/products', product, {
       headers: { Authorization: token },

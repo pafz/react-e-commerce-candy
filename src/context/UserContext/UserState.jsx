@@ -108,4 +108,4 @@ export const UserProvider = ({ children }) => {
   );
 };
 
-const API_URL = 'http://localhost:3000'; //el puerto que estemos usando en el backend
+const API_URL = 'http://localhost:3000';

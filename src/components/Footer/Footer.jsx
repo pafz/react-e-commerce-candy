@@ -1,6 +1,6 @@
 import React from 'react';
 import './Footer.scss';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 import { UserContext } from '../../context/UserContext/UserState';
@@ -24,7 +24,7 @@ const Footer = () => {
   return (
     <div className="footer">
       <div>Candy Shop 2023 ®</div>
-      <div>Patricia Fernandez Zamanillo</div>
+      <div>Patricia Fernández Zamanillo</div>
     </div>
   );
 };

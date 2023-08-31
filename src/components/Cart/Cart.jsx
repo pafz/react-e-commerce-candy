@@ -1,4 +1,4 @@
-import { useContext, useEffect, useRef, useState } from 'react';
+import { useContext } from 'react';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 import { OrderContext } from '../../context/OrdersContext/OrdersState';
 import { Button, Table, Popconfirm } from 'antd';
@@ -94,5 +94,3 @@ const Cart = () => {
 };
 
 export default Cart;
-//https://ant.design/components/table#components-table-demo-ellipsis-custom-tooltip Editable Cells
-//https://www.youtube.com/watch?v=y4_nSE-aZhc

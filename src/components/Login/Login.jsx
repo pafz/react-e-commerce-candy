@@ -67,4 +67,3 @@ const Login = () => {
 };
 
 export default Login;
-//https://ant.design/components/form

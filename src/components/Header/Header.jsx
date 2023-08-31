@@ -1,5 +1,5 @@
 import './Header.scss';
-import { Link, useNavigate, useParams } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useContext, useEffect } from 'react';
 import { UserContext } from '../../context/UserContext/UserState';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
@@ -12,8 +12,7 @@ import {
   ShoppingCartOutlined,
 } from '@ant-design/icons';
 import { UserOutlined } from '@ant-design/icons';
-import { Badge, Avatar, Space } from 'antd';
-//TODO: cart_badge change to backgroundColor
+import { Badge } from 'antd';
 
 const Header = () => {
   const { token, logout, user, getUserInfo } = useContext(UserContext);
@@ -102,7 +101,3 @@ const Header = () => {
 };
 
 export default Header;
-//https://ant.design/components/badge
-//https://ant.design/components/avatar
-//TODO: https://ant.design/docs/spec/navigation
-//TODO: srcSet="" A list of sources to use for different screen resolutions
