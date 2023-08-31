@@ -198,6 +198,8 @@ En el <i>index.js</i>:<br>
 <p>ER Diagram of Candy DB in MySQL Workbench</p>
 
 ![foto](./public/img/candy.png)
+![gif](./public/gif/joss.gif)
+![gif](./public/gif/admin-cart.gif)
 </views>
 
 <!-- LINKS -->
