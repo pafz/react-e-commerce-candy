@@ -22,36 +22,10 @@ const Footer = () => {
   }, [cart]);
 
   return (
-    <nav className="menu footer_nav">
-      {token ? (
-        <>
-          <span>
-            <Link to="/profile">Profile</Link>
-          </span>
-          <span className="headerCart">
-            <Link to="/cart">Cart</Link>
-          </span>
-          <span>
-            <Link to="/">Products</Link>
-          </span>
-          <span onClick={logoutUser}>
-            <Link to="/">Logout</Link>
-          </span>
-        </>
-      ) : (
-        <>
-          <span>
-            <Link to="/">Products</Link>
-          </span>
-          <span>
-            <Link to="/register"> Register</Link>
-          </span>
-          <span>
-            <Link to="/login">Login</Link>
-          </span>
-        </>
-      )}
-    </nav>
+    <div className="footer">
+      <div>Candy Shop 2023 ®</div>
+      <div>Patricia Fernandez Zamanillo</div>
+    </div>
   );
 };
 

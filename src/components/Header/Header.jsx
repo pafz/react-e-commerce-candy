@@ -37,45 +37,43 @@ const Header = () => {
   }, [cart]);
 
   return (
-    <nav className="header_nav">
-      <div className="container_header_title">
-        <p className="header_title">
-          ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋ Candy shop ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋
-        </p>
+    <>
+      <div className="header_title">
+        ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋ Candy shop ≂ ≃ ≄ ≅ ≆ ≇ ≈ ≉ ≊ ≋
       </div>
 
-      <div>
+      <nav className="header_nav">
         {token ? (
           <div className="loggedInMenu menu">
             <span>
               <Link to="/profile">
-                <UserOutlined className="user_icon" />
+                <UserOutlined className="user_icon" /> Profile
               </Link>
             </span>
 
             <span className="headerCart">
-              <Link to="/cart">
-                <Badge className="cart_badge" count={cart.length} size="small">
-                  <ShoppingCartOutlined className="cart_svg" />
-                </Badge>
-              </Link>
+              <Badge className="cart_badge" count={cart.length} size="small">
+                <Link to="/cart">
+                  <ShoppingCartOutlined className="cart_svg" /> Cart
+                </Link>
+              </Badge>
             </span>
 
             <span>
               <Link to="/">
-                <HomeOutlined className="home_svg" />
+                <HomeOutlined className="home_svg" /> Home
               </Link>
             </span>
             {user?.role === 'admin' && (
               <span>
                 <Link to="/createproduct">
-                  <PlusCircleOutlined className="plus_svg" />
+                  <PlusCircleOutlined className="plus_svg" /> Create Product
                 </Link>
               </span>
             )}
             <span onClick={logoutUser}>
               <Link to="/">
-                <LogoutOutlined className="logout_svg" />
+                <LogoutOutlined className="logout_svg" /> Logout
               </Link>
             </span>
           </div>
@@ -83,23 +81,23 @@ const Header = () => {
           <div className="unloggedMenu menu">
             <span>
               <Link to="/">
-                <HomeOutlined className="home_svg" />
+                <HomeOutlined className="home_svg" /> Home
               </Link>
             </span>
             <span>
               <Link to="/register">
-                <PicRightOutlined className="register_svg" />
+                <PicRightOutlined className="register_svg" /> Register
               </Link>
             </span>
             <span>
               <Link to="/login">
-                <LoginOutlined className="login_svg" />
+                <LoginOutlined className="login_svg" /> Login
               </Link>
             </span>
           </div>
         )}
-      </div>
-    </nav>
+      </nav>
+    </>
   );
 };
 

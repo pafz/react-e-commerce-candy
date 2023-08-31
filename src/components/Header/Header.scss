@@ -2,17 +2,14 @@
 
 $padding_menu: 0 1.5%;
 
+
 .header_nav {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    // padding: 10px;
-    // margin-top: 50px;
-    z-index:10;
+  position: sticky;
+  top: 0;
+  z-index:10;
 }
 
-.container_header_title{
+.header_title{
   display:flex;
   flex-direction:column;
   flex-wrap:nowrap;
@@ -20,32 +17,11 @@ $padding_menu: 0 1.5%;
   align-items:unset;
   align-content:center;
   background-color: $pink;
-  padding: 15px;
+  padding: 10px 0;
+  height: 40px;
+  font-size:1.2em;
+  font-weight: bold;
 }
-
-.header_title{
-  order:0;
-  flex:0 0 auto;
-  align-self:auto;
-  height:20%;
-  width:auto;
-  // font-size:2vw
-}
-
-// .headerTitle{
-//   height: 50px;
-//   text-align: center;
-//     display:flex;
-//     flex-direction:row;
-//     flex-wrap:wrap;
-//     justify-content:center;
-//     align-items:unset;
-//     align-content:flex-start;
-//     // height:100vh; /*Este valor lo puedes omitir si la altura de tu componente esta definida*/
-//     background-color: $pink;
-
-    
-//   }
 
   .loggedInMenu{
     background-color: $aqua
@@ -61,18 +37,27 @@ $padding_menu: 0 1.5%;
 }
 
 .menu {
-  padding: 15px;
+  padding: 10px 0;
+  display: flex;
+  justify-content: center;
+  gap: 15px;
 }
 
-.menu > span > a {
-  padding:  1.5%;
+.menu > span {
+ a {
+  padding:  5px;
   border-radius: 5px;
   border: 1px solid;
-  margin-right: 25px;
+  line-height: 18px;
+  
+  font-size: 14px;
+  background-color: #adebef;
   cursor: pointer;
+  white-space: nowrap;
   &:hover {
-    box-shadow: 2px 3px 19px 1px rgba(124,198,202,0.8);
+    box-shadow: 2px 3px 5px 1px rgba(124,198,202,0.8);
   }
+}
 }
 
 

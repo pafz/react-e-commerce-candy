@@ -1,11 +1,11 @@
-import React, { useContext, useEffect, useState } from 'react';
+import React, { useContext, useEffect } from 'react';
 import { ProductsContext } from '../../context/ProductsContext/ProductsState';
 import { Link } from 'react-router-dom';
 import { Space, Input, Slider, Card, Button, Popconfirm } from 'antd';
 import './../../colors.scss';
 import './Products.scss';
 import { DeleteOutlined, RedoOutlined } from '@ant-design/icons';
-import CreateProduct from '../CreateProduct/CreateProduct';
+import { UserContext } from '../../context/UserContext/UserState';
 //TODO: usar button como component
 //TODO: Product context
 
@@ -13,15 +13,10 @@ const { Search } = Input;
 
 const Products = () => {
   //TODO: button to findAll again after search???
-  const {
-    getProducts,
-    products,
-    addCart,
-    filters,
-    setFilters,
-    updateProduct,
-    deleteProduct,
-  } = useContext(ProductsContext);
+  const { getProducts, products, addCart, filters, setFilters, deleteProduct } =
+    useContext(ProductsContext);
+
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     getProducts(filters);
@@ -42,7 +37,8 @@ const Products = () => {
   return (
     <>
       <div className="products_search">
-        <Space direction="vertical">
+        <Space>
+          Name
           <Search
             className="search_text"
             placeholder="search product"
@@ -51,8 +47,10 @@ const Products = () => {
             }}
           />
         </Space>
-        <div className="search_price_text">
+        <Space className="price">
+          Price
           <Slider
+            className="slider"
             range={{
               draggableTrack: true,
             }}
@@ -62,16 +60,20 @@ const Products = () => {
               setFilters({ low, high });
             }}
           />
-        </div>
+        </Space>
       </div>
       <div className="products-container">
         {products.map(product => {
           return (
             <Card
-              className="card"
+              className="card product"
               key={product.id}
               hoverable
-              title={product.favorite}
+              title={
+                <Link className="name" to={'/product/' + product.id}>
+                  {product.name}
+                </Link>
+              }
               cover={
                 <img
                   alt={product.name}
@@ -79,32 +81,33 @@ const Products = () => {
                 />
               }
             >
-              <nav className="product_name">
-                <Link to={'/product/' + product.id}>{product.name}</Link>
-              </nav>
+              <div>{product.favorite}</div>
 
-              <Space className="site-button-ghost-wrapper" wrap>
-                <Button ghost onClick={() => addCart(product)}>
-                  Add Cart
+              <Space>
+                <Button
+                  className="price"
+                  type="button"
+                  onClick={() => addCart(product)}
+                >
+                  Add to cart {product.price.toFixed(2)} ₿
                 </Button>
               </Space>
-              <p>{product.price.toFixed(2)} ₿</p>
+              {user?.role === 'admin' && (
+                <div className="buttons_delete_update">
+                  <Button type="button">
+                    <Popconfirm
+                      title="Sure to delete?"
+                      onConfirm={() => deleteProduct(product)}
+                    >
+                      <DeleteOutlined className="delete_svg" /> Delete
+                    </Popconfirm>
+                  </Button>
 
-              <div className="buttons_delete_update">
-                <Popconfirm
-                  title="Sure to delete?"
-                  onConfirm={() => deleteProduct(product)}
-                >
-                  <Space className="site-button-ghost-wrapper" wrap>
-                    <DeleteOutlined className="delete_svg" />
-                  </Space>
-                </Popconfirm>
-                <Space className="site-button-ghost-wrapper" wrap>
                   <Link to={'/editproduct/' + product.id}>
-                    <RedoOutlined className="redo_svg" />
+                    <RedoOutlined className="redo_svg" /> Update
                   </Link>
-                </Space>
-              </div>
+                </div>
+              )}
             </Card>
           );
         })}

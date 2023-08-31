@@ -23,17 +23,19 @@ function App() {
           <ProductsProvider>
             <OrdersProvider>
               <Header />
-              <Routes>
-                <Route path="/login" element={<Login />} />
-                <Route path="/profile" element={<Profile />} />
-                <Route path="/editprofile" element={<EditProfile />} />
-                <Route path="/" element={<Products />} />
-                <Route path="/cart" element={<Cart />} />
-                <Route path="/register" element={<Register />} />
-                <Route path="/product/:id" element={<Product />} />
-                <Route path="/createproduct" element={<CreateProduct />} />
-                <Route path="/editproduct/:id" element={<EditProduct />} />
-              </Routes>
+              <div id="main">
+                <Routes>
+                  <Route path="/login" element={<Login />} />
+                  <Route path="/profile" element={<Profile />} />
+                  <Route path="/editprofile" element={<EditProfile />} />
+                  <Route path="/" element={<Products />} />
+                  <Route path="/cart" element={<Cart />} />
+                  <Route path="/register" element={<Register />} />
+                  <Route path="/product/:id" element={<Product />} />
+                  <Route path="/createproduct" element={<CreateProduct />} />
+                  <Route path="/editproduct/:id" element={<EditProduct />} />
+                </Routes>
+              </div>
               <Footer />
             </OrdersProvider>
           </ProductsProvider>
